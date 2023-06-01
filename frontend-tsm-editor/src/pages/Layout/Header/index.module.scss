@@ -1,0 +1,12 @@
+@import '~@/style/var.scss';
+
+.title {
+  display: flex;
+  align-items: center;
+  color: $primary-color;
+}
+
+.icon {
+  font-size: 3.4rem;
+  margin-right: 0.6rem;
+}

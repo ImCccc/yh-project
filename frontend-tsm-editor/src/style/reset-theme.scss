@@ -1,0 +1,171 @@
+@import '~@/style/var.scss';
+.layout {
+  background: rgba(239, 243, 246, 1);
+}
+body {
+  // 输入框高度重置
+  .ant-select-selector,
+  .ant-input {
+    min-height: 4rem !important;
+  }
+
+  textarea.ant-input {
+    font-size: $font-size-base;
+  }
+
+  .ant-btn {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius;
+  }
+
+  .ant-modal-close-x {
+    width: 5.6rem;
+    height: 5.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ant-modal-confirm-btns {
+    display: flex;
+  }
+
+  .ant-modal-confirm-body .ant-modal-confirm-content {
+    font-size: $font-size-base;
+  }
+
+  .dry-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -2rem;
+    margin-left: -1.5rem;
+    min-height: 12rem;
+    max-height: 40rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .dry-checkbox {
+      flex-shrink: 0;
+      width: 15rem;
+      height: 4rem;
+      border-radius: 0.5rem;
+      border: $border-base;
+      display: flex;
+      align-items: center;
+      padding: 0 0.8rem;
+      margin-top: 2rem;
+      margin-left: 1.5rem;
+    }
+    .ant-checkbox {
+      margin-top: -0.4rem;
+    }
+    .ant-checkbox + span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .dry-modal-confirm .ant-modal-confirm {
+    .ant-modal-body {
+      padding: 0;
+    }
+    .ant-modal-confirm-content {
+      margin: 0 !important;
+      padding: 2rem $padding-base;
+    }
+    .ant-modal-confirm-btns {
+      border-top: $border-base;
+      display: flex;
+      width: 100%;
+      margin: 0;
+      justify-content: flex-end;
+      align-items: center;
+      height: $height-confirm;
+      padding: 0 $padding-base;
+    }
+    .anticon-exclamation-circle {
+      display: none;
+    }
+    .ant-modal-confirm-title {
+      display: flex;
+      align-items: center;
+      font-size: $font-size-base;
+      border-bottom: $border-base;
+      height: $height-confirm;
+      font-weight: bold;
+      padding: 0 3rem;
+    }
+  }
+
+  .dry-dropdown {
+    .rc-virtual-list-holder-inner {
+      flex-wrap: wrap;
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: space-between;
+      padding: 1rem 2rem 0;
+    }
+    .ant-select-item {
+      height: 4rem;
+      width: 48%;
+      margin-bottom: 1.6rem;
+      border: $border-base;
+      border-radius: $border-radius;
+      padding: 0 1rem;
+    }
+
+    // 定制checkbox
+    .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+      border: 1px solid #1890ff;
+      background-color: #fafafa;
+    }
+
+    .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+      background-color: #fff;
+    }
+    // 重置select下拉选项的样式
+    .ant-select-item-option-content {
+      display: flex;
+      align-items: center;
+      font-size: $font-size-base;
+    }
+    // 选项的溢出...
+    .ant-select-item-option-label {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    // 选择框checkbox
+    .ant-checkbox-inner {
+      margin-right: 1rem;
+      margin-bottom: -0.2rem;
+      flex-shrink: 0;
+    }
+    .ant-checkbox-inner {
+      display: inline-block;
+    }
+    .ant-select-item-option-selected {
+      .ant-checkbox-inner {
+        background-color: #096dd9;
+        border-color: #096dd9;
+        margin-right: 0.6rem;
+      }
+      .ant-checkbox-inner:after {
+        position: absolute;
+        display: table;
+        border: 2px solid #fff;
+        border-top: 0;
+        border-left: 0;
+        transform: rotate(45deg) scale(1) translate(-50%, -50%);
+        opacity: 1;
+        transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+        content: ' ';
+      }
+    }
+    .ant-select-item-option-state {
+      display: none;
+    }
+  }
+}

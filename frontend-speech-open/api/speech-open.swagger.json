@@ -1,0 +1,1270 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "speech-open/speech-open.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/rpc/speech-open.service-robotics/AppService.Create": {
+      "post": {
+        "summary": "创建应用",
+        "operationId": "AppService_Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenAppCreateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenAppCreateReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/AppService.CreateAppType": {
+      "post": {
+        "summary": "创建应用类型",
+        "operationId": "AppService_CreateAppType",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenCreateAppTypeResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenCreateAppTypeReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/AppService.Delete": {
+      "post": {
+        "summary": "删除应用",
+        "operationId": "AppService_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenBaseResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenAppDeleteReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/AppService.DeleteAppType": {
+      "post": {
+        "summary": "删除应用类型",
+        "operationId": "AppService_DeleteAppType",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenBaseResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenDeleteAppTypeReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/AppService.Get": {
+      "post": {
+        "summary": "获取应用信息",
+        "operationId": "AppService_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenAppGetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenAppGetReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/AppService.Page": {
+      "post": {
+        "summary": "应用分页",
+        "operationId": "AppService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenAppPageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenAppPageReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/AppService.Publish": {
+      "post": {
+        "summary": "应用发布",
+        "operationId": "AppService_Publish",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenBaseResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenAppPublishReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/AppService.PublishRecord": {
+      "post": {
+        "summary": "应用发布记录，默认最近10条",
+        "operationId": "AppService_PublishRecord",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenAppPublishRecordResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenAppPublishRecordReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/AppService.Update": {
+      "post": {
+        "summary": "应用信息修改",
+        "operationId": "AppService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenAppUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenAppUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/DeviceService.Page": {
+      "post": {
+        "summary": "分页查询",
+        "operationId": "DeviceService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenDevicePageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenDevicePageReq"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/DeviceService.Register": {
+      "post": {
+        "summary": "根据APPID获取应用信息",
+        "operationId": "DeviceService_Register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenDeviceRegisterResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenDeviceRegisterReq"
+            }
+          }
+        ],
+        "tags": [
+          "DeviceService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/SkillService.Create": {
+      "post": {
+        "summary": "创建技能",
+        "operationId": "SkillService_Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenSkillCreateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenSkillCreateReq"
+            }
+          }
+        ],
+        "tags": [
+          "SkillService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/SkillService.GetSelect": {
+      "post": {
+        "summary": "查询技能选择",
+        "operationId": "SkillService_GetSelect",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenSkillGetSelectResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenSkillGetSelectReq"
+            }
+          }
+        ],
+        "tags": [
+          "SkillService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/SkillService.List": {
+      "post": {
+        "summary": "技能列表",
+        "operationId": "SkillService_List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenSkillListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenSkillListReq"
+            }
+          }
+        ],
+        "tags": [
+          "SkillService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/SkillService.Select": {
+      "post": {
+        "summary": "技能选择",
+        "operationId": "SkillService_Select",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenBaseResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenSkillSelectReq"
+            }
+          }
+        ],
+        "tags": [
+          "SkillService"
+        ]
+      }
+    },
+    "/rpc/speech-open.service-robotics/SkillService.Update": {
+      "post": {
+        "summary": "技能信息修改",
+        "operationId": "SkillService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/speechopenBaseResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/speechopenSkillUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "SkillService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "speechopenAppCreateReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "应用名称"
+        },
+        "flag": {
+          "type": "string",
+          "title": "应用标识"
+        },
+        "type": {
+          "type": "string",
+          "title": "应用类型"
+        },
+        "describe": {
+          "type": "string",
+          "title": "描述"
+        },
+        "aiui_appid": {
+          "type": "string",
+          "title": "aiui appid"
+        },
+        "aiui_appkey": {
+          "type": "string",
+          "title": "aiui appkey"
+        }
+      },
+      "title": "AppCreateReq 创建应用请求参数"
+    },
+    "speechopenAppCreateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "title": "应用id"
+        }
+      },
+      "title": "AppCreateResp 创建应用应答"
+    },
+    "speechopenAppDeleteReq": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "应用ID列表"
+        }
+      },
+      "title": "AppDeleteReq 应用删除请求"
+    },
+    "speechopenAppDetailInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "应用id"
+        },
+        "name": {
+          "type": "string",
+          "title": "应用名称"
+        },
+        "flag": {
+          "type": "string",
+          "title": "应用标识"
+        },
+        "type": {
+          "type": "string",
+          "title": "应用类型"
+        },
+        "describe": {
+          "type": "string",
+          "title": "描述"
+        },
+        "appid": {
+          "type": "string",
+          "title": "appid"
+        },
+        "appkey": {
+          "type": "string",
+          "title": "appkey"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32",
+          "title": "应用版本"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "应用状态 0-未上线 1-发布中（待审核） 2-上线 3-发布失败"
+        },
+        "aiui_appid": {
+          "type": "string",
+          "title": "aiui appid"
+        },
+        "aiui_appkey": {
+          "type": "string",
+          "title": "aiui appkey"
+        }
+      },
+      "title": "AppDetailInfo 应用详情"
+    },
+    "speechopenAppGetReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "应用id"
+        }
+      },
+      "title": "AppGetReq 获取应用信息请求参数"
+    },
+    "speechopenAppGetResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "app_info": {
+          "$ref": "#/definitions/speechopenAppDetailInfo",
+          "title": "应用信息"
+        },
+        "sdk_infos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/speechopenSDKInfo"
+          },
+          "title": "SDK信息"
+        }
+      },
+      "title": "AppGetResp 获取应用信息应答"
+    },
+    "speechopenAppInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "应用id"
+        },
+        "name": {
+          "type": "string",
+          "title": "应用名称"
+        },
+        "flag": {
+          "type": "string",
+          "title": "应用标识"
+        },
+        "type": {
+          "type": "string",
+          "title": "应用类型"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "创建时间"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "应用状态  0-未上线 1-发布中（待审核） 2-上线 3-发布失败"
+        }
+      },
+      "title": "AppInfo 应用信息"
+    },
+    "speechopenAppPageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从0开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        }
+      },
+      "title": "AppPageReq 应用分页请求参数"
+    },
+    "speechopenAppPageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "返回码"
+        },
+        "msg": {
+          "type": "string",
+          "title": "应答信息"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/speechopenAppInfo"
+          },
+          "title": "设备列表"
+        }
+      },
+      "title": "AppPageResp 应用分页应答"
+    },
+    "speechopenAppPublishRecordReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "应用id"
+        }
+      },
+      "title": "AppPublishRecordReq 应用发布请求"
+    },
+    "speechopenAppPublishRecordResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/speechopenPublishRecord"
+          }
+        },
+        "next_version": {
+          "type": "integer",
+          "format": "int64",
+          "title": "下一个版本号"
+        }
+      },
+      "title": "AppPublishRecordResp 应用发布应答"
+    },
+    "speechopenAppPublishReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "uid值"
+        },
+        "publish_explain": {
+          "type": "string",
+          "title": "发布说明"
+        }
+      },
+      "title": "AppPublishReq 应用发布请求"
+    },
+    "speechopenAppUpdateReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "应用id"
+        },
+        "name": {
+          "type": "string",
+          "title": "应用名称"
+        },
+        "flag": {
+          "type": "string",
+          "title": "应用标识"
+        },
+        "type": {
+          "type": "string",
+          "title": "描述"
+        },
+        "aiui_appid": {
+          "type": "string",
+          "title": "aiui appid"
+        },
+        "aiui_appkey": {
+          "type": "string",
+          "title": "aiui appkey"
+        }
+      },
+      "title": "AppUpdateReq 更新应用请求参数"
+    },
+    "speechopenAppUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "title": "应用id"
+        }
+      },
+      "title": "AppUpdateResp 更新应用应答"
+    },
+    "speechopenBaseResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "返回码"
+        },
+        "msg": {
+          "type": "string",
+          "title": "应答信息"
+        }
+      },
+      "title": "基础应答协议"
+    },
+    "speechopenCreateAppTypeReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "speechopenCreateAppTypeResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "speechopenDecive": {
+      "type": "object",
+      "properties": {
+        "mac": {
+          "type": "string",
+          "title": "设备MAC"
+        },
+        "device_sn": {
+          "type": "string",
+          "title": "设备SN"
+        },
+        "system": {
+          "type": "string",
+          "title": "操作系统"
+        },
+        "sdk_version": {
+          "type": "string",
+          "title": "SDK版本号"
+        },
+        "connect_time": {
+          "type": "string",
+          "title": "接入时间"
+        }
+      },
+      "title": "Decice 接入设备信息"
+    },
+    "speechopenDeleteAppTypeReq": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "speechopenDevicePageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从0开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        },
+        "start_time": {
+          "type": "string",
+          "title": "起始时间 时间格式2006-01-02 15:06:07"
+        },
+        "end_time": {
+          "type": "string",
+          "title": "结束时间"
+        },
+        "app_id": {
+          "type": "string",
+          "title": "应用ID"
+        }
+      }
+    },
+    "speechopenDevicePageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/speechopenDecive"
+          },
+          "title": "设备列表"
+        }
+      }
+    },
+    "speechopenDeviceRegisterReq": {
+      "type": "object",
+      "properties": {
+        "appid": {
+          "type": "string",
+          "title": "appid"
+        },
+        "mac": {
+          "type": "string",
+          "title": "设备MAC"
+        },
+        "device_sn": {
+          "type": "string",
+          "title": "设备SN"
+        },
+        "system": {
+          "type": "string",
+          "title": "操作系统"
+        },
+        "sdk_version": {
+          "type": "string",
+          "title": "SDK版本号"
+        }
+      }
+    },
+    "speechopenDeviceRegisterResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "title": "设备注册应答"
+    },
+    "speechopenPublishRecord": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "format": "int64",
+          "title": "应用记录"
+        },
+        "commit_time": {
+          "type": "string",
+          "title": "提交时间"
+        },
+        "deal_time": {
+          "type": "string",
+          "title": "处理时间"
+        },
+        "deal_result": {
+          "type": "integer",
+          "format": "int32",
+          "title": "处理结果，0-未上线 1-发布中（待审核） 2-发布成功 3-发布失败"
+        }
+      },
+      "title": "发布记录"
+    },
+    "speechopenSDKInfo": {
+      "type": "object",
+      "properties": {
+        "system": {
+          "type": "string",
+          "title": "操作系统"
+        },
+        "version": {
+          "type": "string",
+          "title": "版本号"
+        },
+        "update_date": {
+          "type": "string",
+          "title": "更新日期"
+        },
+        "update_url": {
+          "type": "string",
+          "title": "更新内容，url连接地址"
+        },
+        "sdk_url": {
+          "type": "string",
+          "title": "SDK下载地址"
+        }
+      },
+      "title": "SDKInfo SDK下载详情"
+    },
+    "speechopenSkill": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "技能ID"
+        },
+        "skill_name": {
+          "type": "string",
+          "title": "技能名称"
+        },
+        "skill_flag": {
+          "type": "string",
+          "title": "技能标识"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "创建时间"
+        }
+      },
+      "title": "Skill 技能信息"
+    },
+    "speechopenSkillCreateReq": {
+      "type": "object",
+      "properties": {
+        "skill_name": {
+          "type": "string",
+          "title": "技能名称"
+        },
+        "skill_flag": {
+          "type": "string",
+          "title": "技能标识"
+        }
+      },
+      "title": "SkillCreateReq 创建技能请求参数"
+    },
+    "speechopenSkillCreateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      },
+      "title": "SkillCreateResp 创建技能应答"
+    },
+    "speechopenSkillGetSelectReq": {
+      "type": "object",
+      "properties": {
+        "app_id": {
+          "type": "string",
+          "title": "应用id"
+        }
+      },
+      "title": "SkillGetSelectReq 查询选择的技能"
+    },
+    "speechopenSkillGetSelectResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "skill_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "选择的技能id列表"
+        }
+      },
+      "title": "SkillGetSelectResp 查询选择"
+    },
+    "speechopenSkillListReq": {
+      "type": "object",
+      "properties": {
+        "app_id": {
+          "type": "string",
+          "title": "应用id"
+        }
+      },
+      "title": "SkillListReq 技能列表请求"
+    },
+    "speechopenSkillListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/speechopenSkill"
+          }
+        }
+      },
+      "title": "SkillListResp 技能列表应答"
+    },
+    "speechopenSkillSelectReq": {
+      "type": "object",
+      "properties": {
+        "app_id": {
+          "type": "string",
+          "title": "应用id"
+        },
+        "skill_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "选择的技能id列表"
+        }
+      },
+      "title": "SkillSelectReq 技能选择查询"
+    },
+    "speechopenSkillUpdateReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "技能ID"
+        },
+        "skill_name": {
+          "type": "string",
+          "title": "技能名称"
+        },
+        "skill_flag": {
+          "type": "string",
+          "title": "技能标识"
+        }
+      },
+      "title": "SkillUpdateReq 技能更新请求参数"
+    }
+  }
+}

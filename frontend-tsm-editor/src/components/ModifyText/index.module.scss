@@ -1,0 +1,15 @@
+@import '~@/style/var.scss';
+
+.icon {
+  display: none;
+  width: 5rem;
+  text-align: center;
+  color: $link-color-base;
+}
+
+.title:hover {
+  cursor: pointer;
+  span {
+    display: inline-block;
+  }
+}

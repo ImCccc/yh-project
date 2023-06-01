@@ -1,0 +1,12 @@
+.nodes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  > div {
+    width: 25%;
+    height: 8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

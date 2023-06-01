@@ -1,0 +1,25 @@
+@import '~@/style/var.scss';
+
+.table {
+  min-width: 108rem;
+  margin-top: -10%;
+  border-left: $border-base;
+  tr {
+    width: 100%;
+    background: #fff;
+  }
+  tr:first-child {
+    background: rgba(239, 243, 246, 1);
+    font-weight: bold;
+  }
+  tr:last-child {
+    border-bottom: $border-base;
+  }
+  td {
+    height: 4rem;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-right: $border-base;
+    border-top: $border-base;
+  }
+}
