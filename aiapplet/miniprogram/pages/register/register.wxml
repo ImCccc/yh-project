@@ -1,0 +1,115 @@
+<!--register.wxml-->
+<view class="container">
+  <!-- 顶部区域 -->
+  <view class="top">
+    <!-- top-item -->
+    <view class="top-item">
+      <van-icon name="/svg/icon_phone.svg" size="80rpx" />
+      <text class="blue font-size-14" style="margin-top: 8rpx;">手机验证</text>
+    </view>
+    <!-- top-item -->
+    <view class="top-item">
+      <van-icon name="{{step === 0 ? '/svg/icon_right.svg' : '/svg/icon_right_blue.svg'}}" size="30rpx" />
+    </view>
+    <!-- top-item -->
+    <view class="top-item">
+      <!-- 灰色 -->
+      <block wx:if="{{step === 0}}">
+        <van-icon name="/svg/icon_sound.svg" size="80rpx" />
+        <text class="gray font-size-14" style="margin-top: 8rpx;">声音验证</text>
+      </block>
+      <!-- 蓝色 -->
+      <block wx:else>
+        <van-icon name="/svg/icon_sound_blue.svg" size="80rpx" />
+        <text class="blue font-size-14" style="margin-top: 8rpx;">声音验证</text>
+      </block>
+    </view>
+    <!-- top-item -->
+    <view class="top-item">
+      <van-icon name="{{step === 2 ? '/svg/icon_right_blue.svg' : '/svg/icon_right.svg'}}" color="red" size="30rpx" />
+    </view>
+    <!-- top-item -->
+    <view class="top-item">
+      <block wx:if="{{step === 2}}">
+        <van-icon name="/svg/icon_finish_blue.svg" size="80rpx" />
+        <text class="blue font-size-14" style="margin-top: 8rpx;">完成</text>
+      </block>
+      <block wx:else>
+        <van-icon name="/svg/icon_finish.svg" size="80rpx" />
+        <text class="gray font-size-14" style="margin-top: 8rpx;">完成</text>
+      </block>
+    </view>
+  </view>
+
+  <!-- 第一步 -->
+  <block wx:if="{{step === 0}}">
+    <!-- 卡片 -->
+    <view class="card">
+      <view class="card-content">
+        <!-- OA手机 -->
+        <view>
+          <view class="base-font-weight">
+            OA手机
+          </view>
+          <van-field model:value="{{ phoneNumber }}" placeholder="请输入OA绑定的手机号码" bind:change="inputChange" />
+          <!-- 输入框错误信息 -->
+          <view class="input-error">
+            {{phoneNumberError}}
+          </view>
+        </view>
+        <!-- 验证码 -->
+        <view>
+          <view class="base-font-weight">
+            验证码
+          </view>
+          <van-field model:value="{{ captcha }}" center clearable placeholder="请输入验证码" use-button-slot bind:change="inputChange">
+            <van-button slot="button" size="small" type="info" plain round bindtap="clickCaptcha" disabled="{{timing !== -1}}">{{ timing > -1 ? (timing + '秒后重新发送') : '发送验证码' }}
+            </van-button>
+          </van-field>
+          <!-- 输入框错误信息 -->
+          <view class="input-error">
+            {{captchaError}}
+          </view>
+        </view>
+        <!-- 提交按钮 -->
+        <view class="submit">
+          <van-button round type="info" block bindtap="clickNextButton">下一步</van-button>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 第二步 -->
+  <block wx:if="{{step === 1}}">
+    <view class="step-two-content">
+      <!-- <c-voice info="{{voiceStep === 1 ? chat1 : chat2}}" bindrecordFinish="recordFinish" mikeAuthorize="{{mikeAuthorize}}" /> -->
+      <view class="voice-content">
+        <view>
+          <c-record-ai info="{{voiceStep === 1 ? chat1 : chat2}}" />
+        </view>
+        <view class="bottom">
+          <c-recording class="w100" bindrecordFinish="recordFinish" mikeAuthorize="{{mikeAuthorize}}" minDuration="{{minDuration}}"></c-recording>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 第三步 -->
+  <block wx:if="{{step === 2}}">
+    <view class="step-three-card">
+      <van-icon name="/svg/img_success.svg" size="244rpx" />
+      <text class="step-three-text">恭喜你，{{username}}！验证成功！设置一下头像吧</text>
+
+      <button open-type="chooseAvatar" class="avatar-wrapper" bind:chooseavatar="onChooseAvatar">
+        <image class="avatar" src="{{avatarUrl}}"></image>
+      </button>
+
+      <view style="width: 100%;">
+        <van-button round type="info" block bindtap="clickFinish">返回主页</van-button>
+      </view>
+
+      <van-dialog wx:if="{{pcPlatform === true}}" message="PC端暂不支持声音验证\n后续请在手机端完成" show="{{ true }}" />
+
+    </view>
+  </block>
+</view>

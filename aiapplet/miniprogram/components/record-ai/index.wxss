@@ -1,0 +1,59 @@
+.record-container {
+  display: flex;
+  margin-left: 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.robot {
+  flex-shrink: 0;
+  width: 80rpx;
+  margin-right: 8rpx;
+}
+
+.content {
+  padding: 28rpx 32rpx 0;
+  background: #FEFFFF;
+  border-radius: 0 16rpx 16rpx 16rpx;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.content.padding {
+  padding: 28rpx 32rpx;
+}
+
+.tip-wrap {
+  padding: 24rpx 0;
+}
+
+.trimming-width {
+  width: 120rpx;
+  flex-shrink: 0;
+}
+
+.border {
+  flex-grow: 1;
+  height: 1px;
+  margin-top: 16rpx;
+  background-color: #E9E9E9;
+}
+
+.cell {
+  padding: 16rpx 0;
+}
+
+.face {
+  max-width: 240rpx;
+  max-height: 240rpx;
+}
+
+.current-time {
+  text-align: center;
+  color: #969696;
+  font-size: 24rpx;
+  padding: 12rpx 0;
+}
+
+.tip-mt {
+  margin-top: 10rpx;
+}

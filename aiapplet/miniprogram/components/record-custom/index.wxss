@@ -1,0 +1,95 @@
+.record-custom-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.current-time {
+  text-align: center;
+  color: #969696;
+  font-size: 24rpx;
+  padding: 12rpx 0;
+}
+
+.text-box {
+  display: flex;
+  align-items: center;
+  align-self: baseline;
+  color: #fff;
+  padding: 18rpx 24rpx;
+  background-image: linear-gradient(90deg, #07AAFF 0%, #0371FD 100%);
+  border-radius: 16rpx 0 16rpx 16rpx;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.usericon {
+  width: 80rpx;
+  height: 80rpx;
+  flex-shrink: 0;
+  margin-left: 8rpx;
+}
+
+.trimming-width {
+  width: 120rpx;
+  flex-shrink: 0;
+}
+
+.duration {
+  margin-right: -32rpx;
+}
+
+.wifi-cont {
+  position: sticky !important;
+  width: 50rpx;
+  height: 50rpx;
+  position: relative;
+  transform: rotate(-45deg);
+  overflow: hidden;
+}
+
+.wifi-circle {
+  border: 5rpx solid #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.first {
+  width: 5rpx;
+  height: 5rpx;
+  left: 45rpx;
+  top: 45rpx;
+}
+
+.second {
+  width: 25rpx;
+  height: 25rpx;
+  left: 35rpx;
+  top: 35rpx;
+}
+
+.third {
+  width: 40rpx;
+  height: 40rpx;
+  left: 25rpx;
+  top: 25rpx;
+}
+
+.animation-second {
+  animation: fade 1s linear 0.2s infinite;
+}
+
+.animation-third {
+  animation: fade 1s linear 0.4s infinite;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

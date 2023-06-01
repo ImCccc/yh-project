@@ -1,0 +1,91 @@
+.c-title {
+  height: 112rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 var(--base-margin);
+  background: #EFF3F8;
+}
+
+.c-content {
+  display: flex;
+  flex-direction: column;
+  height: 840rpx;
+  overflow: hidden;
+  background: #EFF3F8;
+}
+
+.c-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80rpx 0;
+  line-height: 60rpx;
+}
+
+.c-code {
+  padding: 0 64rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.c-code .code {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 96rpx;
+  height: 128rpx;
+  font-size: 48rpx;
+  font-weight: bold;
+  background: #FEFFFF;
+  border-radius: 8px;
+}
+
+.c-input {
+  position: absolute;
+  bottom: -80rpx;
+  left: -300rpx;
+  width: 300rpx;
+  border: none;
+  color: transparent;
+}
+
+.c-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
+  padding: 64rpx;
+}
+
+.c-toggle {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.soundUnlock {
+  margin-top: 32rpx;
+}
+
+.c-down {
+  position: fixed;
+  left: 50%;
+  bottom: calc(840rpx + 120rpx);
+  transform: translateX(-50%);
+  font-size: 72rpx;
+  color: #fff;
+}
+
+.c-pd {
+  margin-top: 32rpx;
+}
+
+.c-sound {
+  justify-content: space-between;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+}

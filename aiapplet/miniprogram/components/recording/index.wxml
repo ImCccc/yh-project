@@ -1,0 +1,37 @@
+<view 
+  class="oper"
+  bindtouchend="touchend"
+  bindtouchmove="touchmove" 
+  bindtouchstart="touchstart"
+  bindtouchcancel="touchcancel">
+  <view class="slot {{!isRecording ? '' : 'hide'}}">
+    <slot></slot>
+  </view>
+  <!-- 类似于默认插槽效果 -->
+  <view class="c-button {{!isRecording ? '' : 'hide'}}">
+    <text>长按并说话≥{{minDuration}}秒</text>
+    <van-icon name="/svg/btn_voice.svg" size="160rpx" />
+  </view>
+  <!-- 录音的动画效果 -->
+  <view 
+    wx:if="{{!isChat}}" 
+    class="c-loader {{isRecording ? '' : 'hide'}}"
+  ></view>
+</view>
+<view 
+  wx:if="{{isChat}}" 
+  class="recording {{isRecording ? '' : 'hide'}}">
+  <c-record-animation 
+    class="animation" 
+    cancelRecord="{{cancelRecord}}"
+    timeRemaining="{{timeRemaining}}"
+  ></c-record-animation>
+  <c-icon-clear 
+    wx:if="{{isRecording}}" 
+    cancelRecord="{{cancelRecord}}"
+    bindmounted="mounted"
+  ></c-icon-clear>
+  <view class="bottom" bindtouchmove="touchmove" >
+    <image class="icon-yuyin" src="../../svg/icon_yuyin.svg"/>
+  </view>
+</view>

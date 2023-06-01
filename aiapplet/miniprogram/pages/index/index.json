@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "盈宝机器人",
+  "usingComponents": {
+    "van-transition": "@vant/weapp/transition/index",
+    "c-record-ai": "/components/record-ai/index",
+    "c-recording": "/components/recording/index",
+    "c-agreement": "/components/agreement/index",
+    "c-authentication": "/components/authentication/index",
+    "c-record-custom": "/components/record-custom/index"
+  },
+  "disableScroll": true
+}

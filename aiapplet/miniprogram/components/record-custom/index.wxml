@@ -1,0 +1,18 @@
+<view wx:if="{{info.currentTimeFormat}}" class="current-time">
+  {{info.currentTimeFormat}}
+</view>
+<view class="record-custom-container">
+  <view class="trimming-width"></view>
+  <view class="text-box" bindtap="playRecord">
+    <block wx:if="{{info.url}}">
+      <text class="duration">{{info.duration}}"</text>
+      <view class="wifi-cont">
+        <view class="wifi-circle first"></view>
+        <view class="wifi-circle second {{isPlay ? 'animation-second' : ''}}"></view>
+        <view class="wifi-circle third {{isPlay ? 'animation-third' : ''}}"></view>
+      </view>
+    </block>
+    <text wx:else class="base-font" user-select>{{info.text}}</text>
+  </view>
+  <image class="usericon" src="{{avatar}}" />
+</view>

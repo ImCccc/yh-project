@@ -1,0 +1,12 @@
+<view class="voice-content">
+  <view>
+    <c-record-ai wx:if="{{info}}" info="{{info}}" />
+  </view>
+  <view class="bottom">
+    <c-recording 
+      class="w100" 
+      bindrecordFinish="recordFinish" 
+      mikeAuthorize="{{mikeAuthorize}}"
+    ></c-recording>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "c-icon-clear": "/components/icon-clear/index",
+    "c-record-animation": "/components/record-animation/index"
+  }
+}

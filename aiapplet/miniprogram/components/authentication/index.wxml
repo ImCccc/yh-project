@@ -1,0 +1,50 @@
+<van-popup 
+  round 
+  show="{{show}}" 
+  position="bottom"
+  bindclose="onClose"
+  custom-style="background: rgba(0,0,0,0); padding-bottom: 0;"
+>
+  <van-icon class="c-down" bindtap="onClose" name="arrow-down" />
+  <view class="c-title">
+    <view class="base-font-large-weight">
+      {{isSoundUnlock ? '声音解锁' : '手机解锁'}}
+    </view>
+    <view wx:if="{{!pcPlatform}}" class="base-link c-toggle" bindtap="toggle">
+      切换{{isSoundUnlock ? '手机解锁' : '声音解锁'}}
+    </view>
+  </view>
+  <view wx:if="{{isSoundUnlock}}" class="c-content c-sound">
+    <c-record-ai class="c-pd" info="{{info}}" />
+    <c-recording 
+      class="w100" 
+      minDuration="{{3}}" 
+      bindrecordFinish="recordFinish" 
+    ></c-recording>
+  </view>
+  <block wx:else>
+    <view class="c-content">
+      <view class="base-font-large-weight c-tip">
+        <view>{{phoneNumberFormat}}</view>
+        <view>请输入手机短信验证码进行解锁</view>
+      </view>
+      <view bindtap="codeClick" class="c-code">
+        <text wx:for="{{codeLength}}" wx:key="index" class="code">{{code[index]}}</text>
+        <input 
+          class="c-input" 
+          type="number" 
+          value="{{code}}" 
+          focus="{{focus}}" 
+          maxlength="{{codeLength}}" 
+          bindinput="codeInputChange" 
+          bindblur="codeInputBlur" 
+        />
+      </view>
+      <view class="c-bottom">
+        <van-button round type="info" size="large" bindtap="sendCode" disabled="{{timing !== -1}}">
+          {{ timing > -1 ? (timing + '秒后重新发送') : '发送验证码' }}
+        </van-button>
+      </view>
+    </view>
+  </block>
+</van-popup>

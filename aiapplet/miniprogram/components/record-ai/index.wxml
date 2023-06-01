@@ -1,0 +1,27 @@
+<view wx:if="{{info.currentTimeFormat}}" class="current-time">{{info.currentTimeFormat}}</view>
+<view class="record-container">
+  <image mode="widthFix" class="robot" src="../../svg/img_robot.svg" /> 
+  <image  wx:if="{{info.faceUrl}}" class="face" src="{{info.faceUrl}}"></image>
+  <view wx:else="{{info.faceUrl}}" class="content {{ showBorder ? '' : 'padding'}}">
+    <text class="base-font" user-select>{{info.content}}</text>
+    <view wx:if="{{info.tip}}" class="base-tip-small tip-mt">{{ info.tip }}</view>
+    <view wx:if="{{showBorder}}" class="border"></view>
+    <view 
+      wx:if="{{info.links}}"
+      wx:for="{{info.links}}"
+      data-item="{{item}}"
+      wx:key="index"
+      bindtap="linkTap"
+      class="base-link cell"
+    >{{item.text}}</view>
+    <view wx:if="{{info.subContent}}" class="tip-wrap">
+      <view 
+        wx:for="{{info.subContent}}"
+        wx:key="index"
+        class="base-tip"
+        style="color: {{item.color || ''}};"
+      >{{ item.text ? item.text : item }}</view>
+    </view>
+  </view>
+  <view class="trimming-width"></view>
+</view>

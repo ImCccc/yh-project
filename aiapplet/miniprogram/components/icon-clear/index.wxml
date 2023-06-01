@@ -1,0 +1,10 @@
+<view id="iconClear" class="c-container">
+  <view class="icon-box {{cancelRecord ? 'cancelRecord' : ''}}">
+    <van-icon 
+      size="80rpx" 
+      name="cross" 
+      class="icon-clear" 
+      color="{{cancelRecord ? '#000' : 'rgba(255,255,255,0.35)'}}" 
+    />
+  </view>
+</view>

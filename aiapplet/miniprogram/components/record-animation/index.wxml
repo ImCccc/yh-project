@@ -1,0 +1,18 @@
+<view class="spinner {{cancelRecord ? 'cancelRecord' : ''}}">
+  <block wx:if="{{!timeRemaining}}">
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <view class="bar"></view>
+    <text class="triangle"></text>
+  </block>
+  <text wx:else>{{timeRemaining}}秒之后结束录音</text>
+</view>

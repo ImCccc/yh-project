@@ -1,0 +1,26 @@
+<van-popup 
+  show 
+  custom-style="background: rgba(0,0,0,0); padding-bottom: 0;"
+  overlay-style="background-color: rgba(0,0,0,.5);"
+>
+  <view class="wrap">
+    <view class="img-wrap">
+      <image class="img" mode="widthFix" src="./img_head.png"></image>
+    </view>
+    <view class="context">
+      <view class="title">Hi~欢迎使用盈宝机器人</view>
+      <van-button  bindtap="agree" class="btn" type="info">立即使用</van-button>
+      <view class="checkbox-box">
+        <van-checkbox icon-size="30rpx" value="{{checked}}" bindchange="onChange">
+          我已经阅读并同意
+        </van-checkbox>
+        <text bindtap="goPage" class="link-color">《用户使用协议》</text>
+        <text>和</text>
+        <text bindtap="goPagePrivacy" class="link-color">《隐私政策》</text>
+      </view>
+    </view>
+
+  </view>
+
+  
+</van-popup>

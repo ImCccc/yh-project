@@ -1,0 +1,57 @@
+<scroll-view 
+  class="scroll"  
+  scroll-y="{{scrollY}}"
+  style="{{chatRecordList.length <= 2 ? '' : scrollStyle}}"
+  scroll-into-view="{{scrollId}}">
+  <block wx:for="{{chatRecordList}}" wx:key="index">
+    <c-record-custom 
+      wx:if="{{item.type === 2}}" 
+      bindplayRecord="playRecord" 
+      info="{{item}}" 
+      avatar="{{avatar}}" 
+      data-item="{{item}}" 
+      playRecordUrl="{{playRecordUrl}}"
+    ></c-record-custom>
+    <c-record-ai 
+      wx:else 
+      bindlink="linkClick" 
+      info="{{item}}"
+    ></c-record-ai>
+  </block>
+  <view id="list-child">1</view>
+</scroll-view>
+<view id="pageBottom" class="bottom" style="{{bottomStyle}}">
+  <block wx:if="{{isRecord}}">
+    <view bindtap="toggle" class="iconfont iconkb"></view>
+    <c-recording isChat class="w100" bindrecordFinish="recordFinish">
+      <view class="speak-btn">按住说话</view>
+    </c-recording>
+  </block>
+  <block wx:if="{{!isRecord}}">
+    <view 
+      wx:if="{{!pcPlatform}}" 
+      bindtap="toggle" 
+      class="iconfont iconyuyin"
+    ></view>
+    <view wx:else class="placeholder"></view>
+    <input 
+      confirm-hold
+      type="text" 
+      confirm-type="send" 
+      focus="{{isFocus}}" 
+      value="{{inputValue}}" 
+      adjust-position="{{false}}"
+      class="textinput comp {{inputValue ? 'field' : ''}}" 
+      bindinput="bindinput" 
+      bindconfirm="bindconfirm">
+      <view 
+        wx:if="{{inputValue}}" 
+        class="textbutton" 
+        bindtap="sendClick">
+        发送
+      </view>
+    </input>
+  </block>
+</view>
+<c-agreement wx:if="{{!isAgree}}" bindagree="agree" />
+<c-authentication show="{{showPopup}}" bindclose="closePopup"></c-authentication>

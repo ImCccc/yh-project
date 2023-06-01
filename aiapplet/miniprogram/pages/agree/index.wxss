@@ -1,0 +1,13 @@
+.agree-page {
+  padding: 32rpx;
+  line-height: 50rpx;
+}
+
+.main-title {
+  margin: 20rpx 0;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+.sun-title {
+  font-weight: bold;
+}

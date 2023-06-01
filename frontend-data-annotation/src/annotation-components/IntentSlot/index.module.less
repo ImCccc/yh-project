@@ -1,0 +1,71 @@
+@import '../../styles/var.less';
+
+.borderBox {
+  position: relative;
+  width: 100%;
+  min-width: 40rem;
+  margin: 4rem 0;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  :global(.base-head) {
+    padding: 0 @outside-margin;
+  }
+}
+
+.text {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.4rem @outside-margin @outside-margin;
+  line-height: 4rem;
+  .span {
+    padding: 0 1rem;
+  }
+  .tag {
+    margin: 0 1rem;
+  }
+  .tag,
+  .span {
+    margin-top: 1rem;
+  }
+}
+
+.unselect {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+}
+
+.select {
+  background-color: #b4d7ff;
+}
+
+.tip {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.textBox {
+  padding: 1.4rem @outside-margin @outside-margin;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  .cardTag {
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+}
+
+.label {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.spacing {
+  display: inline-block;
+  width: 1rem;
+}

@@ -1,0 +1,207 @@
+@import '../../styles/var.less';
+
+.audio-segmentation {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  // 0.2rem是为了修复标注时当前选中时间段的边框样式
+  padding: 0 @outside-margin 0.2rem;
+
+  &.empty {
+    justify-content: center;
+    .ant-empty {
+      margin: 0;
+      padding: 4rem;
+      background: #fff;
+    }
+  }
+
+  .wavesurfer-handle {
+    width: 5px !important;
+    background-color: transparent !important;
+  }
+
+  // 时间段边框样式
+  .wavesurfer-handle-start {
+    border-left: none;
+  }
+
+  // 时间段边框样式
+  .wavesurfer-handle-end {
+    border-right: none;
+  }
+
+  wave cursor {
+    border-right: 1px solid transparent !important;
+  }
+
+  .delete-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.2rem;
+    cursor: pointer;
+  }
+
+  .wavebox {
+    min-height: 148px;
+    position: relative;
+    background-color: #fff;
+  }
+
+  .wave {
+    position: relative;
+    [class^='correct'] {
+      position: absolute;
+      top: 0;
+      width: 20px;
+      height: 100%;
+    }
+    .correct-left {
+      left: -20px;
+    }
+    .correct-right {
+      right: -20px;
+    }
+  }
+
+  // .hideScroll {
+  //   wave {
+  //     overflow: hidden !important;
+  //   }
+  // }
+
+  .next,
+  .prev {
+    cursor: pointer;
+    position: absolute;
+    top: 64px;
+  }
+  .prev {
+    left: 20px;
+    transform: translate(-50%, -50%);
+  }
+  .next {
+    right: 20px;
+    transform: translate(50%, -50%);
+  }
+
+  .add-area {
+    position: absolute;
+    background-color: #ccc;
+    top: 0;
+    height: 100%;
+  }
+
+  .time-line {
+    background-color: #fff;
+    padding-bottom: @outside-margin;
+  }
+
+  .fragment {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+
+    margin-top: @outside-margin;
+    background-color: #fff;
+
+    .border {
+      padding: 0 @outside-margin;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .form {
+      padding: 1.6rem @outside-margin 3.4rem;
+    }
+
+    .field,
+    .fieldArea {
+      display: flex;
+    }
+
+    .fieldArea,
+    .tabs {
+      position: relative;
+      margin-top: 3.4rem;
+    }
+
+    .tabs {
+      align-items: center;
+    }
+
+    .tabsList {
+      position: relative;
+      flex-grow: 1;
+      display: flex;
+      flex-wrap: wrap;
+      border: 1px solid #d9d9d9;
+      border-radius: 2px;
+      min-height: @base-height;
+      padding: 0 1rem 1rem;
+      .ant-tag {
+        margin-top: 1rem;
+      }
+    }
+
+    .tabsList.empty {
+      padding: 0;
+    }
+
+    .field {
+      > div {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .between {
+      justify-content: space-between;
+    }
+
+    .startInput {
+      margin-right: @inside-margin-rl;
+    }
+
+    .label {
+      color: rgba(0, 0, 0, 0.85);
+      flex-shrink: 0;
+      margin-right: 1rem;
+    }
+
+    .subtitle {
+      color: rgba(0, 0, 0, 0.85);
+    }
+
+    .btnBox > button {
+      margin-left: 2rem;
+    }
+  }
+
+  // 选中时间段的样式
+  .choose {
+    box-shadow: 0px 0px 0.2rem 0.2rem rgba(24, 144, 255, 0.3);
+    border: 1px solid rgba(24, 144, 255, 0.3);
+  }
+
+  .err-info {
+    position: absolute;
+    left: 10.2rem;
+    bottom: -2.8rem;
+  }
+
+  .disabled {
+    color: #ccc;
+    cursor: no-drop;
+  }
+
+  .tip {
+    color: rgba(0, 0, 0, 0.3);
+    margin-left: 11px;
+  }
+}

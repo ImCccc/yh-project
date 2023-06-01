@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "c-recording": "/components/recording/index",
+    "c-record-ai": "/components/record-ai"
+  }
+}

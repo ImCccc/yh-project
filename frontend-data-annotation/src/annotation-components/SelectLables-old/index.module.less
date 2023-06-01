@@ -1,0 +1,85 @@
+@import '../../styles/var.less';
+
+.warp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 38.4rem;
+  max-height: 80rem;
+  min-height: 10rem;
+  padding-right: @outside-margin;
+  > div {
+    background: #fff;
+  }
+  .group {
+    display: flex;
+    flex-direction: column;
+    :global(.ant-radio-wrapper) {
+      height: 5.6rem;
+    }
+    :global(.ant-checkbox-wrapper) {
+      height: 5.6rem;
+      margin-left: 0 !important;
+    }
+  }
+}
+
+.arrowWrap {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 5.4rem;
+  &:hover {
+    .arrowUp {
+      display: flex;
+      left: 2rem;
+      height: 3.2rem;
+      top: 0;
+    }
+  }
+}
+
+.arrowUp {
+  display: none;
+  height: 100%;
+  position: absolute;
+  align-items: center;
+  justify-content: right;
+  width: 3rem;
+  color: @link-color;
+  cursor: pointer;
+}
+
+.head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: @row-height;
+  padding-right: @outside-margin;
+  padding-left: 3.4rem;
+  &:hover {
+    .arrowUp {
+      display: flex;
+      left: 0;
+    }
+  }
+}
+
+.icon {
+  font-size: 2rem;
+  width: 3rem;
+  text-align: left;
+}
+
+.input {
+  flex-shrink: 0;
+  padding: @outside-margin;
+  padding-bottom: 1rem;
+}
+
+.scroll {
+  flex-grow: 1;
+  overflow: auto;
+}
