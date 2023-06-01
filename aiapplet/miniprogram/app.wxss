@@ -1,0 +1,94 @@
+@import './iconfont.wxss';
+
+page {
+  --base-margin: 32rpx;
+  --base-margin-double: 64rpx;
+  --base-font-size: 32rpx;
+  --font-size-small: 24rpx;
+  --font-size-large: 34rpx;
+  --border-color: #e9e9e9;
+  --font-tip-color: rgba(0, 0, 0, 0.45);
+  --link-color: #0371FD;
+}
+
+page {
+  background-color: #eff3f8;
+}
+
+.hide {
+  display: none !important;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.base-font {
+  font-size: var(--base-font-size);
+}
+
+.base-font-weight {
+  font-size: var(--base-font-size);
+  font-weight: bold;
+}
+
+.base-font-large {
+  font-size: 34rpx;
+}
+
+.base-font-large-weight {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.base-tip-small {
+  font-size: var(--font-size-small);
+  color: var(--font-tip-color);
+}
+
+.base-tip {
+  font-size: 30rpx;
+  color: var(--font-tip-color);
+}
+
+.base-border {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.base-padding {
+  padding: var(--base-margin);
+}
+
+.base-link {
+  color: var(--link-color);
+  font-size: 30rpx;
+}
+
+.link-color {
+  color: var(--link-color);
+}
+
+page .van-button {
+  width: 100%;
+}
+
+page .small .van-cell {
+  border-radius: 10rpx;
+  padding: 12rpx var(--base-margin);
+}
+
+page .van-cell {
+  padding: var(--cell-vertical-padding, 10px) var(--cell-horizontal-padding, 0);
+  font-size: var(--cell-font-size, 28rpx);
+  line-height: var(--cell-line-height, 52rpx);
+}
+
+page .van-cell::after {
+  left: 0;
+  right: 0;
+}
+
+page .van-field__control {
+  height: var(--cell-line-height, 48rpx);
+  min-height: var(--cell-line-height, 48rpx);
+}
