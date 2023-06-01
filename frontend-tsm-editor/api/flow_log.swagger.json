@@ -1,0 +1,302 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "flow_log/flow_log.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/rpc/speech/FlowLog.ExportPage": {
+      "post": {
+        "summary": "导出获取分页列表",
+        "operationId": "FlowLogService_ExportPageFlowLog",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/flow_logExportPageFlowLogResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/flow_logExportPageFlowLogReq"
+            }
+          }
+        ],
+        "tags": [
+          "FlowLogService"
+        ]
+      }
+    },
+    "/rpc/speech/FlowLog.Page": {
+      "post": {
+        "summary": "获取分页列表",
+        "operationId": "FlowLogService_PageFlowLog",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/flow_logPageFlowLogResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/flow_logPageFlowLogReq"
+            }
+          }
+        ],
+        "tags": [
+          "FlowLogService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "flow_logExportPageFlowLogReq": {
+      "type": "object",
+      "properties": {
+        "device_sn": {
+          "type": "string",
+          "title": "设备标识"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "开始时间戳"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "结束时间戳"
+        }
+      }
+    },
+    "flow_logExportPageFlowLogResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "file_url": {
+          "type": "string"
+        }
+      }
+    },
+    "flow_logFlowLog": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "device_sn": {
+          "type": "string",
+          "title": "设备sn"
+        },
+        "session_id": {
+          "type": "string",
+          "title": "会话id"
+        },
+        "interact_id": {
+          "type": "string",
+          "title": "交互id"
+        },
+        "asr_text": {
+          "type": "string",
+          "title": "asr文本"
+        },
+        "tts_text": {
+          "type": "string",
+          "title": "tts文本"
+        },
+        "skill_id": {
+          "type": "string",
+          "title": "技能id"
+        },
+        "intent_id": {
+          "type": "string",
+          "title": "意图id"
+        },
+        "flow_status": {
+          "type": "string",
+          "title": "状态"
+        },
+        "voice_file_path": {
+          "type": "string",
+          "title": "语音文件"
+        },
+        "create_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "交互时间"
+        },
+        "time_stat": {
+          "$ref": "#/definitions/flow_logFlowLogTimeStat",
+          "title": "相关统计"
+        }
+      }
+    },
+    "flow_logFlowLogTimeStat": {
+      "type": "object",
+      "properties": {
+        "vad_start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "vad 开始时间"
+        },
+        "vad_end_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "vad 结束时间"
+        },
+        "nlp_cost_time": {
+          "type": "integer",
+          "format": "int32",
+          "title": "nlp 消耗时间"
+        },
+        "nlp_start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "nlp 开始时间"
+        },
+        "nlp_end_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "nlp 结束时间"
+        },
+        "asr_cost_time": {
+          "type": "integer",
+          "format": "int32",
+          "title": "asr 消耗时间"
+        },
+        "asr_start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "asr 开始时间"
+        },
+        "asr_end_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "asr 结束时间"
+        }
+      }
+    },
+    "flow_logPageFlowLogReq": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从1开始"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        },
+        "device_sn": {
+          "type": "string",
+          "title": "设备标识"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "开始时间戳"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "结束时间戳"
+        }
+      },
+      "title": "搜索条件 时间毫秒时间戳范围、设备sn\n设备sn asr文本(显示10个文件加省略号) tts文本(显示10个文件加省略号) 技能id 意图id asr时间 nlp时间 操作(下载语音文件 查看详细弹框显示json)"
+    },
+    "flow_logPageFlowLogResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "记录总数"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/flow_logFlowLog"
+          },
+          "title": "数据列表"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

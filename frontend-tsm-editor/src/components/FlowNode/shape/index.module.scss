@@ -1,0 +1,70 @@
+@import '~@/style/var.scss';
+$border: $border-node;
+$background: #fff;
+
+.ellipse {
+  border-radius: 50%;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.base {
+  user-select: none;
+  cursor: pointer;
+  background-color: $background;
+  border: $border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roundRect {
+  border-radius: 15%;
+}
+
+// 分支
+.diamondWrap {
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.diamondTest {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.diamond {
+  background-color: $background;
+  border: $border;
+  transform: rotateZ(45deg) skew(-15deg, -15deg);
+}
+
+// 并行节点
+.concurrent {
+  user-select: none;
+  cursor: pointer;
+  background-color: $background;
+  border: $border;
+  border-top: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.concurrentTop {
+  width: 100%;
+  height: 2rem;
+  border: $border-node;
+  border-bottom: none;
+  background-color: $background;
+  border-top-left-radius: 100%;
+  border-top-right-radius: 100%;
+}
+.concurrentText {
+  margin-top: -1.5rem;
+}

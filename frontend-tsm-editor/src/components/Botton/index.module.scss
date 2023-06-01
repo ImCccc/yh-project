@@ -1,0 +1,47 @@
+@import '~@/style/var.scss';
+
+.btn {
+  position: relative;
+  width: 18rem;
+  height: 4.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: $font-size-base;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.text {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 1rem;
+}
+
+.close {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
+}
+
+.default {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.default:hover {
+  color: #fff;
+  border: none;
+  background: rgba(0, 67, 133, 0.6);
+}
+
+.active {
+  background: rgba(0, 67, 133, 1);
+  color: #fff;
+}

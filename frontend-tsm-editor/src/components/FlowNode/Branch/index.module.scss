@@ -1,0 +1,49 @@
+@import '~@/style/var.scss';
+
+.wrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 15rem;
+  padding: 0 1rem;
+}
+
+.line {
+  width: 2rem;
+  height: 0.2rem;
+  background-color: $border-node-color;
+}
+
+.line2 {
+  position: relative;
+  height: 50%;
+  width: 26px;
+  border: 0.2rem solid $border-node-color;
+  border-right: none;
+}
+
+.jiantou {
+  position: absolute;
+  bottom: -0.6rem;
+  right: -0.3rem;
+  width: 0;
+  height: 0;
+  border-top: .5rem solid transparent;
+  border-left: 1rem solid;
+  border-bottom: .5rem solid transparent;
+}
+.jiantoutop {
+  top: -0.6rem;
+}
+
+.branch {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  > div {
+    padding: 0 2rem;
+    height: 50%;
+    display: flex;
+    align-items: center;
+  }
+}

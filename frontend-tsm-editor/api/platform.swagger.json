@@ -1,0 +1,3620 @@
+{
+  "consumes": ["application/json"],
+  "definitions": {
+    "platform_iamAccess": {
+      "default": "UNKNOWN",
+      "enum": ["UNKNOWN", "GRANTED", "DENIED"],
+      "properties": {},
+      "required": true,
+      "type": "string"
+    },
+    "platform_iamApplicationCreateRequest": {
+      "properties": {
+        "app_name": {
+          "title": "应用名称",
+          "type": "string"
+        },
+        "app_path": {
+          "title": "应用路径",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "项目资源ID",
+          "type": "string"
+        },
+        "sub_apps": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubApplication"
+          },
+          "title": "子应用",
+          "type": "array"
+        }
+      },
+      "required": ["project_id", "app_name", "app_path", "sub_apps"],
+      "type": "object"
+    },
+    "platform_iamApplicationCreateResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamApplicationDeleteRequest": {
+      "properties": {
+        "app_id": {
+          "title": "应用ID",
+          "type": "string"
+        }
+      },
+      "required": ["app_id"],
+      "type": "object"
+    },
+    "platform_iamApplicationDeleteResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamApplicationDetailRequest": {
+      "properties": {
+        "app_id": {
+          "title": "应用ID",
+          "type": "string"
+        }
+      },
+      "required": ["app_id"],
+      "type": "object"
+    },
+    "platform_iamApplicationDetailResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "data": {
+          "$ref": "#/definitions/platform_iamApplicationInfo",
+          "title": "应用信息"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "data"],
+      "type": "object"
+    },
+    "platform_iamApplicationEditRequest": {
+      "properties": {
+        "app_id": {
+          "title": "应用ID",
+          "type": "string"
+        },
+        "app_name": {
+          "title": "应用名称",
+          "type": "string"
+        },
+        "app_path": {
+          "title": "应用路径",
+          "type": "string"
+        },
+        "sub_apps": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubApplication"
+          },
+          "title": "子应用",
+          "type": "array"
+        }
+      },
+      "required": ["sub_apps", "app_id", "app_name", "app_path"],
+      "type": "object"
+    },
+    "platform_iamApplicationEditResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamApplicationInfo": {
+      "properties": {
+        "app_id": {
+          "title": "应用ID",
+          "type": "string"
+        },
+        "app_name": {
+          "title": "应用名称",
+          "type": "string"
+        },
+        "app_path": {
+          "title": "应用路径",
+          "type": "string"
+        },
+        "sub_apps": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubApplication"
+          },
+          "title": "子应用",
+          "type": "array"
+        }
+      },
+      "required": ["app_id", "app_name", "app_path", "sub_apps"],
+      "type": "object"
+    },
+    "platform_iamApplicationListRequest": {
+      "properties": {
+        "app_name": {
+          "title": "应用名称",
+          "type": "string"
+        },
+        "app_path": {
+          "title": "应用路径",
+          "type": "string"
+        }
+      },
+      "required": ["app_path", "app_name"],
+      "type": "object"
+    },
+    "platform_iamApplicationListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/definitions/platform_iamApplicationInfo"
+          },
+          "title": "应用列表",
+          "type": "array"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "data"],
+      "type": "object"
+    },
+    "platform_iamAssignRole": {
+      "properties": {
+        "access_type": {
+          "$ref": "#/definitions/platform_iamAccess",
+          "title": "授权类型"
+        },
+        "role_id": {
+          "title": "角色ID",
+          "type": "string"
+        }
+      },
+      "required": ["access_type", "role_id"],
+      "type": "object"
+    },
+    "platform_iamCode": {
+      "default": "OK",
+      "enum": [
+        "OK",
+        "INVALID_PARAMS",
+        "TOKEN_AUTH_FAILURE",
+        "INTERNAL_ERROR",
+        "INVALID_USERNAME_OR_PASSWORD",
+        "NO_ACCESS_PERMISSION",
+        "CREATE_RESOURCE_FAILURE",
+        "UPDATE_RESOURCE_FAILURE",
+        "DELETE_RESOURCE_FAILURE",
+        "GET_RESOURCE_LIST_FAILURE",
+        "GET_RESOURCE_DETAIL_FAILURE",
+        "RESOURCE_HAS_EXISTED",
+        "GET_PERMISSION_LIST_FAILURE",
+        "ADD_RESOURCE_PERMISSION_FAILURE",
+        "GET_ROLE_FAILURE",
+        "UPDATE_ROLE_FAILURE",
+        "ROLE_NOT_EXIST",
+        "GRANT_ROLE_PERMISSION_FAILURE",
+        "DELETE_ROLE_FAILURE",
+        "GET_ROLE_PERMISSION_FAILURE",
+        "CREATE_USER_FAILURE",
+        "UPDATE_USER_FAILURE",
+        "DELETE_USER_FAILURE",
+        "QUERY_USER_FAILURE",
+        "CHECK_ACCOUNT_EXISTS",
+        "GET_USER_ROLES_FAILURE",
+        "CHANGE_USER_PASSWORD_FAILURE",
+        "CREATE_TENANT_FAILURE",
+        "UPDATE_TENANT_FAILURE",
+        "DELETE_TENANT_FAILURE",
+        "QUERY_TENANT_FAILURE",
+        "TENANT_NOT_EXIST"
+      ],
+      "properties": {},
+      "required": true,
+      "title": "- OK: 正常返回\n - INVALID_PARAMS: 参数不合法\n - TOKEN_AUTH_FAILURE: Token无效或已过期\n - INTERNAL_ERROR: 内部错误\n - INVALID_USERNAME_OR_PASSWORD: 账号或密码错误\n - NO_ACCESS_PERMISSION: 无访问权限\n - CREATE_RESOURCE_FAILURE: 创建资源失败\n - UPDATE_RESOURCE_FAILURE: 更新资源失败\n - DELETE_RESOURCE_FAILURE: 删除资源失败\n - GET_RESOURCE_LIST_FAILURE: 获取资源列表失败\n - GET_RESOURCE_DETAIL_FAILURE: 获取资源详情失败\n - RESOURCE_HAS_EXISTED: 资源已存在\n - GET_PERMISSION_LIST_FAILURE: 获取权限列表失败\n - ADD_RESOURCE_PERMISSION_FAILURE: 添加资源权限失败\n - GET_ROLE_FAILURE: 获取角色信息失败\n - UPDATE_ROLE_FAILURE: 更新角色失败\n - ROLE_NOT_EXIST: 角色不存在\n - GRANT_ROLE_PERMISSION_FAILURE: 分配角色权限失败\n - DELETE_ROLE_FAILURE: 删除角色失败\n - GET_ROLE_PERMISSION_FAILURE: 获取角色权限失败\n - CREATE_USER_FAILURE: 创建新用户失败\n - UPDATE_USER_FAILURE: 更新用户信息失败\n - DELETE_USER_FAILURE: 删除用户失败\n - QUERY_USER_FAILURE: 用户查询失败\n - CHECK_ACCOUNT_EXISTS: 账号已存在\n - GET_USER_ROLES_FAILURE: 获取用户角色列表失败\n - CHANGE_USER_PASSWORD_FAILURE: 修改用户密码失败\n - CREATE_TENANT_FAILURE: 创建租户失败\n - UPDATE_TENANT_FAILURE: 更新租户失败\n - DELETE_TENANT_FAILURE: 删除租户失败\n - QUERY_TENANT_FAILURE: 查询租户失败\n - TENANT_NOT_EXIST: 租户不存在",
+      "type": "string"
+    },
+    "platform_iamGender": {
+      "default": "MAN",
+      "description": "- MAN: 男士\n - WOMAN: 女士\n - OTHER: 其他",
+      "enum": ["MAN", "WOMAN", "OTHER"],
+      "properties": {},
+      "required": true,
+      "title": "性别",
+      "type": "string"
+    },
+    "platform_iamLoginRequest": {
+      "properties": {
+        "app_key": {
+          "title": "登录应用Key",
+          "type": "string"
+        },
+        "login_method": {
+          "format": "int32",
+          "title": "登录方式[0-普通登录 1-LDAP登录 2-微信扫码登录 3-华为账号登录]",
+          "type": "integer"
+        },
+        "password": {
+          "title": "登录密码",
+          "type": "string"
+        },
+        "terminal": {
+          "title": "登录终端[web,android,ios,ipad,pc-windows10,...]",
+          "type": "string"
+        },
+        "username": {
+          "title": "登录用户名",
+          "type": "string"
+        }
+      },
+      "required": ["login_method", "app_key", "terminal", "username", "password"],
+      "type": "object"
+    },
+    "platform_iamLoginResponse": {
+      "properties": {
+        "app_secret": {
+          "title": "应用秘钥",
+          "type": "string"
+        },
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "refresh_token": {
+          "title": "刷新令牌",
+          "type": "string"
+        },
+        "token": {
+          "title": "登录令牌",
+          "type": "string"
+        }
+      },
+      "required": ["msg", "token", "refresh_token", "app_secret", "code"],
+      "type": "object"
+    },
+    "platform_iamLogoutRequest": {
+      "properties": {
+        "token": {
+          "title": "登出令牌",
+          "type": "string"
+        }
+      },
+      "required": ["token"],
+      "type": "object"
+    },
+    "platform_iamLogoutResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamMenuCreateRequest": {
+      "properties": {
+        "menu_name": {
+          "title": "菜单名称",
+          "type": "string"
+        },
+        "menu_path": {
+          "title": "菜单路径",
+          "type": "string"
+        },
+        "res_pid": {
+          "title": "父级资源ID",
+          "type": "string"
+        },
+        "sub_menus": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubMenu"
+          },
+          "title": "子菜单",
+          "type": "array"
+        }
+      },
+      "required": ["res_pid", "menu_name", "menu_path", "sub_menus"],
+      "type": "object"
+    },
+    "platform_iamMenuCreateResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamMenuDeleteRequest": {
+      "properties": {
+        "menu_id": {
+          "title": "菜单ID",
+          "type": "string"
+        }
+      },
+      "required": ["menu_id"],
+      "type": "object"
+    },
+    "platform_iamMenuDeleteResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamMenuEditRequest": {
+      "properties": {
+        "menu_id": {
+          "title": "菜单ID",
+          "type": "string"
+        },
+        "menu_name": {
+          "title": "菜单名称",
+          "type": "string"
+        },
+        "menu_path": {
+          "title": "菜单路径",
+          "type": "string"
+        },
+        "sub_menus": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubMenu"
+          },
+          "title": "子菜单",
+          "type": "array"
+        }
+      },
+      "required": ["menu_id", "menu_name", "menu_path", "sub_menus"],
+      "type": "object"
+    },
+    "platform_iamMenuEditResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamMenuInfo": {
+      "properties": {
+        "menu_id": {
+          "title": "菜单ID",
+          "type": "string"
+        },
+        "menu_name": {
+          "title": "菜单名称",
+          "type": "string"
+        },
+        "menu_path": {
+          "title": "菜单路径",
+          "type": "string"
+        },
+        "sub_menus": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubMenu"
+          },
+          "title": "子菜单",
+          "type": "array"
+        }
+      },
+      "required": ["menu_id", "menu_name", "menu_path", "sub_menus"],
+      "type": "object"
+    },
+    "platform_iamMenuListRequest": {
+      "properties": {
+        "menu_name": {
+          "title": "菜单名称",
+          "type": "string"
+        },
+        "menu_path": {
+          "title": "菜单路径",
+          "type": "string"
+        },
+        "res_pid": {
+          "title": "父级资源ID",
+          "type": "string"
+        }
+      },
+      "required": ["res_pid", "menu_name", "menu_path"],
+      "type": "object"
+    },
+    "platform_iamMenuListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/definitions/platform_iamMenuInfo"
+          },
+          "title": "菜单列表",
+          "type": "array"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "data"],
+      "type": "object"
+    },
+    "platform_iamModuleCreateRequest": {
+      "properties": {
+        "module_name": {
+          "title": "模块名称",
+          "type": "string"
+        },
+        "module_path": {
+          "title": "模块路径",
+          "type": "string"
+        },
+        "res_pid": {
+          "title": "父级资源ID",
+          "type": "string"
+        },
+        "sub_modules": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubModule"
+          },
+          "title": "子模块",
+          "type": "array"
+        }
+      },
+      "required": ["res_pid", "module_name", "module_path", "sub_modules"],
+      "type": "object"
+    },
+    "platform_iamModuleCreateResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamModuleDeleteRequest": {
+      "properties": {
+        "module_id": {
+          "title": "模块ID",
+          "type": "string"
+        }
+      },
+      "required": ["module_id"],
+      "type": "object"
+    },
+    "platform_iamModuleDeleteResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamModuleEditRequest": {
+      "properties": {
+        "module_id": {
+          "title": "模块ID",
+          "type": "string"
+        },
+        "module_name": {
+          "title": "模块名称",
+          "type": "string"
+        },
+        "module_path": {
+          "title": "模块路径",
+          "type": "string"
+        },
+        "sub_modules": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubModule"
+          },
+          "title": "子模块",
+          "type": "array"
+        }
+      },
+      "required": ["sub_modules", "module_id", "module_name", "module_path"],
+      "type": "object"
+    },
+    "platform_iamModuleEditResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamModuleInfo": {
+      "properties": {
+        "module_id": {
+          "title": "模块ID",
+          "type": "string"
+        },
+        "module_name": {
+          "title": "模块名称",
+          "type": "string"
+        },
+        "module_path": {
+          "title": "模块路径",
+          "type": "string"
+        },
+        "sub_modules": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubModule"
+          },
+          "title": "子模块",
+          "type": "array"
+        }
+      },
+      "required": ["module_id", "module_name", "module_path", "sub_modules"],
+      "type": "object"
+    },
+    "platform_iamModuleListRequest": {
+      "properties": {
+        "module_name": {
+          "title": "模块名称",
+          "type": "string"
+        },
+        "module_path": {
+          "title": "模块路径",
+          "type": "string"
+        },
+        "res_pid": {
+          "title": "父级资源ID",
+          "type": "string"
+        }
+      },
+      "required": ["res_pid", "module_name", "module_path"],
+      "type": "object"
+    },
+    "platform_iamModuleListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/definitions/platform_iamModuleInfo"
+          },
+          "title": "模块列表",
+          "type": "array"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "data"],
+      "type": "object"
+    },
+    "platform_iamPermission": {
+      "properties": {
+        "key": {
+          "title": "关键字",
+          "type": "string"
+        },
+        "parent_id": {
+          "title": "父级ID",
+          "type": "string"
+        },
+        "permission_id": {
+          "title": "权限ID",
+          "type": "string"
+        },
+        "permission_name": {
+          "title": "权限名",
+          "type": "string"
+        },
+        "resource_path": {
+          "title": "资源路径",
+          "type": "string"
+        },
+        "resource_type": {
+          "title": "资源类型",
+          "type": "string"
+        },
+        "sub_permissions": {
+          "items": {
+            "$ref": "#/definitions/platform_iamPermission"
+          },
+          "title": "子权限",
+          "type": "array"
+        }
+      },
+      "required": [
+        "resource_type",
+        "resource_path",
+        "parent_id",
+        "key",
+        "sub_permissions",
+        "permission_id",
+        "permission_name"
+      ],
+      "type": "object"
+    },
+    "platform_iamPermissionListRequest": {
+      "properties": {
+        "parent_pid": {
+          "title": "父权限ID",
+          "type": "string"
+        },
+        "permission_type": {
+          "title": "权限类型",
+          "type": "string"
+        }
+      },
+      "required": ["permission_type", "parent_pid"],
+      "type": "object"
+    },
+    "platform_iamPermissionListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "permission_list": {
+          "items": {
+            "$ref": "#/definitions/platform_iamPermission"
+          },
+          "title": "权限列表",
+          "type": "array"
+        }
+      },
+      "required": ["msg", "permission_list", "code"],
+      "type": "object"
+    },
+    "platform_iamProjectCreateRequest": {
+      "properties": {
+        "project_name": {
+          "title": "项目名称",
+          "type": "string"
+        },
+        "project_path": {
+          "title": "项目路径",
+          "type": "string"
+        },
+        "sub_projects": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubProject"
+          },
+          "title": "子项目",
+          "type": "array"
+        }
+      },
+      "required": ["project_path", "sub_projects", "project_name"],
+      "type": "object"
+    },
+    "platform_iamProjectCreateResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamProjectDeleteRequest": {
+      "properties": {
+        "project_id": {
+          "title": "项目ID",
+          "type": "string"
+        }
+      },
+      "required": ["project_id"],
+      "type": "object"
+    },
+    "platform_iamProjectDeleteResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["msg", "code"],
+      "type": "object"
+    },
+    "platform_iamProjectDetailRequest": {
+      "properties": {
+        "project_id": {
+          "title": "项目ID",
+          "type": "string"
+        }
+      },
+      "required": ["project_id"],
+      "type": "object"
+    },
+    "platform_iamProjectDetailResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "data": {
+          "$ref": "#/definitions/platform_iamProjectInfo",
+          "title": "项目信息"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "data"],
+      "type": "object"
+    },
+    "platform_iamProjectEditRequest": {
+      "properties": {
+        "project_id": {
+          "title": "项目ID",
+          "type": "string"
+        },
+        "project_name": {
+          "title": "项目名称",
+          "type": "string"
+        },
+        "project_path": {
+          "title": "项目路径",
+          "type": "string"
+        },
+        "sub_projects": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubProject"
+          },
+          "title": "子项目",
+          "type": "array"
+        }
+      },
+      "required": ["project_id", "project_name", "project_path", "sub_projects"],
+      "type": "object"
+    },
+    "platform_iamProjectEditResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamProjectInfo": {
+      "properties": {
+        "project_id": {
+          "title": "项目ID",
+          "type": "string"
+        },
+        "project_name": {
+          "title": "项目名称",
+          "type": "string"
+        },
+        "project_path": {
+          "title": "项目路径",
+          "type": "string"
+        },
+        "sub_projects": {
+          "items": {
+            "$ref": "#/definitions/platform_iamSubProject"
+          },
+          "title": "子项目",
+          "type": "array"
+        }
+      },
+      "required": ["project_path", "sub_projects", "project_id", "project_name"],
+      "type": "object"
+    },
+    "platform_iamProjectListRequest": {
+      "properties": {
+        "project_name": {
+          "title": "项目名称",
+          "type": "string"
+        },
+        "project_path": {
+          "title": "项目路径",
+          "type": "string"
+        }
+      },
+      "required": ["project_name", "project_path"],
+      "type": "object"
+    },
+    "platform_iamProjectListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "data": {
+          "items": {
+            "$ref": "#/definitions/platform_iamProjectInfo"
+          },
+          "title": "项目列表",
+          "type": "array"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["data", "code", "msg"],
+      "type": "object"
+    },
+    "platform_iamQueryRoleResourcesRequest": {
+      "properties": {
+        "resource_name": {
+          "title": "资源名称",
+          "type": "string"
+        },
+        "role_id": {
+          "title": "角色ID（必填）",
+          "type": "string"
+        }
+      },
+      "required": ["role_id", "resource_name"],
+      "type": "object"
+    },
+    "platform_iamQueryRoleResourcesResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "resource_list": {
+          "items": {
+            "$ref": "#/definitions/platform_iamResource"
+          },
+          "title": "资源ID列表",
+          "type": "array"
+        },
+        "role_id": {
+          "title": "角色ID",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "role_id", "resource_list"],
+      "type": "object"
+    },
+    "platform_iamQueryUserRolesRequest": {
+      "properties": {
+        "role_name": {
+          "title": "角色名称",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "用户ID（必填）",
+          "type": "string"
+        }
+      },
+      "required": ["user_id", "role_name"],
+      "type": "object"
+    },
+    "platform_iamQueryUserRolesResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "roles": {
+          "items": {
+            "$ref": "#/definitions/platform_iamRole"
+          },
+          "title": "角色列表",
+          "type": "array"
+        },
+        "user_id": {
+          "title": "用户ID",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "user_id", "roles"],
+      "type": "object"
+    },
+    "platform_iamRefreshTokenRequest": {
+      "properties": {
+        "refresh_token": {
+          "title": "刷新令牌",
+          "type": "string"
+        }
+      },
+      "required": ["refresh_token"],
+      "type": "object"
+    },
+    "platform_iamRefreshTokenResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "token": {
+          "title": "新Token",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "token"],
+      "type": "object"
+    },
+    "platform_iamResource": {
+      "properties": {
+        "properties": {
+          "items": {
+            "$ref": "#/definitions/platform_iamresource_api"
+          },
+          "type": "array"
+        },
+        "resource_id": {
+          "type": "string"
+        },
+        "resource_path": {
+          "type": "string"
+        }
+      },
+      "required": ["resource_id", "resource_path", "properties"],
+      "type": "object"
+    },
+    "platform_iamResourceCreateRequest": {
+      "properties": {
+        "parent_resource_id": {
+          "title": "父级资源ID",
+          "type": "string"
+        },
+        "properties": {
+          "items": {
+            "type": "object"
+          },
+          "title": "资源扩展属性集",
+          "type": "array"
+        },
+        "resource_name": {
+          "title": "资源名称",
+          "type": "string"
+        },
+        "resource_path": {
+          "title": "资源路径",
+          "type": "string"
+        },
+        "resource_type": {
+          "$ref": "#/definitions/platform_iamResourceType",
+          "title": "资源类型"
+        },
+        "tenant_id": {
+          "title": "租户ID",
+          "type": "string"
+        }
+      },
+      "required": [
+        "properties",
+        "tenant_id",
+        "resource_name",
+        "resource_type",
+        "resource_path",
+        "parent_resource_id"
+      ],
+      "type": "object"
+    },
+    "platform_iamResourceCreateResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "resource_id": {
+          "title": "资源ID",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "resource_id"],
+      "type": "object"
+    },
+    "platform_iamResourceDeleteRequest": {
+      "properties": {
+        "resource_id": {
+          "title": "资源ID",
+          "type": "string"
+        }
+      },
+      "required": ["resource_id"],
+      "type": "object"
+    },
+    "platform_iamResourceDeleteResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["msg", "code"],
+      "type": "object"
+    },
+    "platform_iamResourceEditRequest": {
+      "properties": {
+        "parent_resource_id": {
+          "title": "父级资源ID",
+          "type": "string"
+        },
+        "properties": {
+          "items": {
+            "type": "object"
+          },
+          "title": "资源扩展属性集",
+          "type": "array"
+        },
+        "resource_id": {
+          "title": "资源ID",
+          "type": "string"
+        },
+        "resource_name": {
+          "title": "资源名称",
+          "type": "string"
+        },
+        "resource_path": {
+          "title": "资源路径",
+          "type": "string"
+        },
+        "resource_type": {
+          "$ref": "#/definitions/platform_iamResourceType",
+          "title": "资源类型"
+        }
+      },
+      "required": [
+        "resource_type",
+        "resource_path",
+        "parent_resource_id",
+        "properties",
+        "resource_id",
+        "resource_name"
+      ],
+      "type": "object"
+    },
+    "platform_iamResourceEditResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamResourceInfo": {
+      "properties": {
+        "parent_resource_id": {
+          "title": "父级资源ID",
+          "type": "string"
+        },
+        "properties": {
+          "items": {
+            "type": "object"
+          },
+          "title": "资源扩展属性集",
+          "type": "array"
+        },
+        "resource_id": {
+          "title": "资源ID",
+          "type": "string"
+        },
+        "resource_name": {
+          "title": "资源名称",
+          "type": "string"
+        },
+        "resource_path": {
+          "title": "资源路径",
+          "type": "string"
+        },
+        "resource_type": {
+          "$ref": "#/definitions/platform_iamResourceType",
+          "title": "资源类型"
+        }
+      },
+      "required": [
+        "resource_id",
+        "resource_name",
+        "resource_type",
+        "resource_path",
+        "parent_resource_id",
+        "properties"
+      ],
+      "type": "object"
+    },
+    "platform_iamResourceInfoRequest": {
+      "properties": {
+        "resource_id": {
+          "title": "资源ID",
+          "type": "string"
+        }
+      },
+      "required": ["resource_id"],
+      "type": "object"
+    },
+    "platform_iamResourceInfoResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "resource_info": {
+          "$ref": "#/definitions/platform_iamResourceInfo",
+          "title": "资源详情"
+        }
+      },
+      "required": ["code", "msg", "resource_info"],
+      "type": "object"
+    },
+    "platform_iamResourceListRequest": {
+      "properties": {
+        "page": {
+          "format": "int32",
+          "title": "页数",
+          "type": "integer"
+        },
+        "parent_resource_id": {
+          "title": "父级资源ID",
+          "type": "string"
+        },
+        "resource_name": {
+          "title": "资源名称",
+          "type": "string"
+        },
+        "resource_path": {
+          "title": "资源路径",
+          "type": "string"
+        },
+        "resource_type": {
+          "title": "资源类型",
+          "type": "string"
+        },
+        "size": {
+          "format": "int32",
+          "title": "条数",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "resource_name",
+        "resource_type",
+        "resource_path",
+        "parent_resource_id",
+        "page",
+        "size"
+      ],
+      "type": "object"
+    },
+    "platform_iamResourceListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "count": {
+          "format": "int64",
+          "title": "筛选资源条数",
+          "type": "string"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "resource_list": {
+          "items": {
+            "$ref": "#/definitions/platform_iamResourceInfo"
+          },
+          "title": "资源列表",
+          "type": "array"
+        }
+      },
+      "required": ["count", "resource_list", "code", "msg"],
+      "type": "object"
+    },
+    "platform_iamResourceType": {
+      "default": "RESOURCE_TYPE_UNSPECIFIED",
+      "enum": [
+        "RESOURCE_TYPE_UNSPECIFIED",
+        "RESOURCE_TYPE_MENU",
+        "RESOURCE_TYPE_MODEL",
+        "RESOURCE_TYPE_APPLICATION",
+        "RESOURCE_TYPE_DEVICE",
+        "RESOURCE_TYPE_PROJECT"
+      ],
+      "properties": {},
+      "required": true,
+      "title": "- RESOURCE_TYPE_UNSPECIFIED: 未定义资源类型\n - RESOURCE_TYPE_MENU: 菜单资源\n - RESOURCE_TYPE_MODEL: 模块资源\n - RESOURCE_TYPE_APPLICATION: 应用资源\n - RESOURCE_TYPE_DEVICE: 设备资源\n - RESOURCE_TYPE_PROJECT: 项目资源",
+      "type": "string"
+    },
+    "platform_iamRole": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": ["id", "name"],
+      "type": "object"
+    },
+    "platform_iamRoleAssignPermissionRequest": {
+      "properties": {
+        "permission_list": {
+          "items": {
+            "type": "string"
+          },
+          "title": "权限ID列表",
+          "type": "array"
+        },
+        "role_id": {
+          "title": "用户ID",
+          "type": "string"
+        }
+      },
+      "required": ["role_id", "permission_list"],
+      "type": "object"
+    },
+    "platform_iamRoleAssignPermissionResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamRoleCreateRequest": {
+      "properties": {
+        "parent_id": {
+          "title": "父级角色ID",
+          "type": "string"
+        },
+        "permission_list": {
+          "items": {
+            "type": "string"
+          },
+          "title": "权限列表",
+          "type": "array"
+        },
+        "role_name": {
+          "title": "角色名称",
+          "type": "string"
+        },
+        "tenant_id": {
+          "title": "租户ID",
+          "type": "string"
+        }
+      },
+      "required": ["tenant_id", "role_name", "parent_id", "permission_list"],
+      "type": "object"
+    },
+    "platform_iamRoleCreateResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "role_id": {
+          "title": "角色ID",
+          "type": "string"
+        }
+      },
+      "required": ["role_id", "code", "msg"],
+      "type": "object"
+    },
+    "platform_iamRoleDeleteRequest": {
+      "properties": {
+        "role_id": {
+          "title": "角色ID",
+          "type": "string"
+        }
+      },
+      "required": ["role_id"],
+      "type": "object"
+    },
+    "platform_iamRoleDeleteResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamRoleEditRequest": {
+      "properties": {
+        "parent_id": {
+          "title": "父级角色ID",
+          "type": "string"
+        },
+        "permission_list": {
+          "items": {
+            "type": "string"
+          },
+          "title": "权限列表",
+          "type": "array"
+        },
+        "role_id": {
+          "title": "角色ID",
+          "type": "string"
+        },
+        "role_name": {
+          "title": "角色名称",
+          "type": "string"
+        }
+      },
+      "required": ["role_id", "role_name", "parent_id", "permission_list"],
+      "type": "object"
+    },
+    "platform_iamRoleEditResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamRoleInfo": {
+      "properties": {
+        "parent_id": {
+          "title": "父级角色ID",
+          "type": "string"
+        },
+        "role_id": {
+          "title": "角色ID",
+          "type": "string"
+        },
+        "role_name": {
+          "title": "角色名称",
+          "type": "string"
+        },
+        "sub_roles": {
+          "items": {
+            "$ref": "#/definitions/platform_iamRoleInfo"
+          },
+          "title": "子级角色信息",
+          "type": "array"
+        }
+      },
+      "required": ["role_id", "role_name", "parent_id", "sub_roles"],
+      "title": "角色信息",
+      "type": "object"
+    },
+    "platform_iamRoleInfoRequest": {
+      "properties": {
+        "role_id": {
+          "title": "角色ID",
+          "type": "string"
+        }
+      },
+      "required": ["role_id"],
+      "type": "object"
+    },
+    "platform_iamRoleInfoResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "role_info": {
+          "$ref": "#/definitions/platform_iamRoleInfo",
+          "title": "角色详情"
+        }
+      },
+      "required": ["msg", "role_info", "code"],
+      "type": "object"
+    },
+    "platform_iamRoleListRequest": {
+      "properties": {
+        "page": {
+          "format": "int32",
+          "title": "页数",
+          "type": "integer"
+        },
+        "role_name": {
+          "title": "角色名称",
+          "type": "string"
+        },
+        "size": {
+          "format": "int32",
+          "title": "条数",
+          "type": "integer"
+        }
+      },
+      "required": ["size", "role_name", "page"],
+      "type": "object"
+    },
+    "platform_iamRoleListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "count": {
+          "format": "int64",
+          "title": "筛选角色条数",
+          "type": "string"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "role_list": {
+          "items": {
+            "$ref": "#/definitions/platform_iamRoleInfo"
+          },
+          "title": "角色信息列表",
+          "type": "array"
+        }
+      },
+      "required": ["code", "msg", "count", "role_list"],
+      "type": "object"
+    },
+    "platform_iamRolePermissionListRequest": {
+      "properties": {
+        "role_id": {
+          "title": "角色ID（必填）",
+          "type": "string"
+        }
+      },
+      "required": ["role_id"],
+      "type": "object"
+    },
+    "platform_iamRolePermissionListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "role_permissions": {
+          "items": {
+            "$ref": "#/definitions/platform_iamPermission"
+          },
+          "title": "角色权限列表",
+          "type": "array"
+        }
+      },
+      "required": ["code", "msg", "role_permissions"],
+      "type": "object"
+    },
+    "platform_iamSubApplication": {
+      "properties": {
+        "sub_app_name": {
+          "title": "子应用名称",
+          "type": "string"
+        },
+        "sub_app_path": {
+          "title": "子应用路径",
+          "type": "string"
+        }
+      },
+      "required": ["sub_app_path", "sub_app_name"],
+      "type": "object"
+    },
+    "platform_iamSubMenu": {
+      "properties": {
+        "sub_menu_name": {
+          "title": "子菜单名称",
+          "type": "string"
+        },
+        "sub_menu_path": {
+          "title": "子菜单路径",
+          "type": "string"
+        }
+      },
+      "required": ["sub_menu_name", "sub_menu_path"],
+      "type": "object"
+    },
+    "platform_iamSubModule": {
+      "properties": {
+        "api": {
+          "title": "模块接口",
+          "type": "string"
+        },
+        "id": {
+          "title": "子模块ID",
+          "type": "string"
+        },
+        "key": {
+          "title": "关键字",
+          "type": "string"
+        },
+        "name": {
+          "title": "子模块名称",
+          "type": "string"
+        }
+      },
+      "required": ["id", "name", "key", "api"],
+      "type": "object"
+    },
+    "platform_iamSubProject": {
+      "properties": {
+        "sub_project_name": {
+          "title": "子项目名称",
+          "type": "string"
+        },
+        "sub_project_path": {
+          "title": "子项目路径",
+          "type": "string"
+        }
+      },
+      "required": ["sub_project_name", "sub_project_path"],
+      "type": "object"
+    },
+    "platform_iamTenantCreateRequest": {
+      "properties": {
+        "account": {
+          "title": "管理员账号",
+          "type": "string"
+        },
+        "email": {
+          "title": "管理员邮箱",
+          "type": "string"
+        },
+        "enabled_flag": {
+          "title": "是否启用。1启用，0未启用",
+          "type": "boolean"
+        },
+        "limit_user": {
+          "format": "int32",
+          "title": "租户下的有效用户数，-1表示不限制",
+          "type": "integer"
+        },
+        "phone": {
+          "title": "管理员电话",
+          "type": "string"
+        },
+        "tenant_name": {
+          "title": "租户名",
+          "type": "string"
+        },
+        "version_number": {
+          "title": "版本号",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account",
+        "phone",
+        "email",
+        "tenant_name",
+        "enabled_flag",
+        "version_number",
+        "limit_user"
+      ],
+      "type": "object"
+    },
+    "platform_iamTenantCreateResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "tenant_id": {
+          "title": "租户ID",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg", "tenant_id"],
+      "type": "object"
+    },
+    "platform_iamTenantDeleteRequest": {
+      "properties": {
+        "tenant_id": {
+          "title": "租户ID",
+          "type": "string"
+        },
+        "tenant_name": {
+          "title": "租户名",
+          "type": "string"
+        }
+      },
+      "required": ["tenant_name", "tenant_id"],
+      "type": "object"
+    },
+    "platform_iamTenantDeleteResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamTenantEditRequest": {
+      "properties": {
+        "enabled_flag": {
+          "title": "是否启用。1启用，0未启用",
+          "type": "boolean"
+        },
+        "limit_user": {
+          "format": "int32",
+          "title": "租户下的有效用户数，-1表示不限制",
+          "type": "integer"
+        },
+        "tenant_id": {
+          "title": "租户ID",
+          "type": "string"
+        },
+        "tenant_name": {
+          "title": "租户名",
+          "type": "string"
+        },
+        "version_number": {
+          "title": "版本号",
+          "type": "string"
+        }
+      },
+      "required": ["tenant_id", "tenant_name", "enabled_flag", "version_number", "limit_user"],
+      "type": "object"
+    },
+    "platform_iamTenantEditResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamTenantInfo": {
+      "properties": {
+        "created_at": {
+          "format": "date-time",
+          "title": "租户创建时间",
+          "type": "string"
+        },
+        "created_by": {
+          "title": "租户创建者",
+          "type": "string"
+        },
+        "enabled_flag": {
+          "title": "是否启用。1启用，0未启用",
+          "type": "boolean"
+        },
+        "limit_user": {
+          "format": "int32",
+          "title": "租户下的有效用户数，-1表示不限制",
+          "type": "integer"
+        },
+        "tenant_id": {
+          "title": "租户ID",
+          "type": "string"
+        },
+        "tenant_name": {
+          "title": "租户名",
+          "type": "string"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "租户更新时间",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "租户更新者",
+          "type": "string"
+        },
+        "version_number": {
+          "title": "版本号",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tenant_id",
+        "version_number",
+        "updated_by",
+        "created_at",
+        "updated_at",
+        "tenant_name",
+        "enabled_flag",
+        "limit_user",
+        "created_by"
+      ],
+      "type": "object"
+    },
+    "platform_iamTenantInfoRequest": {
+      "properties": {
+        "tenant_id": {
+          "title": "租户ID",
+          "type": "string"
+        },
+        "tenant_name": {
+          "title": "租户名",
+          "type": "string"
+        }
+      },
+      "required": ["tenant_id", "tenant_name"],
+      "type": "object"
+    },
+    "platform_iamTenantInfoResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "tenant_info": {
+          "$ref": "#/definitions/platform_iamTenantInfo",
+          "title": "租户信息"
+        }
+      },
+      "required": ["code", "msg", "tenant_info"],
+      "type": "object"
+    },
+    "platform_iamTenantListRequest": {
+      "properties": {
+        "enabled_flag": {
+          "title": "是否启用",
+          "type": "boolean"
+        },
+        "tenant_name": {
+          "title": "租户名",
+          "type": "string"
+        }
+      },
+      "required": ["enabled_flag", "tenant_name"],
+      "type": "object"
+    },
+    "platform_iamTenantListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "count": {
+          "format": "int64",
+          "title": "筛选租户条数",
+          "type": "string"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "tenant_infos": {
+          "items": {
+            "$ref": "#/definitions/platform_iamTenantInfo"
+          },
+          "title": "租户信息列表",
+          "type": "array"
+        }
+      },
+      "required": ["code", "msg", "count", "tenant_infos"],
+      "type": "object"
+    },
+    "platform_iamUpdatePasswordRequest": {
+      "properties": {
+        "confirm_password": {
+          "title": "确认密码",
+          "type": "string"
+        },
+        "new_password": {
+          "title": "新密码",
+          "type": "string"
+        },
+        "old_password": {
+          "title": "旧密码",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "用户ID",
+          "type": "string"
+        }
+      },
+      "required": ["user_id", "old_password", "new_password", "confirm_password"],
+      "type": "object"
+    },
+    "platform_iamUpdatePasswordResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamUserAssignRoleRequest": {
+      "properties": {
+        "role_id_list": {
+          "items": {
+            "$ref": "#/definitions/platform_iamAssignRole"
+          },
+          "title": "角色ID列表",
+          "type": "array"
+        },
+        "source_id": {
+          "title": "角色来源ID（来自某个租户、某个组织架构，或其他LDAP等等）",
+          "type": "string"
+        },
+        "user_id": {
+          "title": "用户ID",
+          "type": "string"
+        }
+      },
+      "required": ["user_id", "role_id_list", "source_id"],
+      "type": "object"
+    },
+    "platform_iamUserAssignRoleResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamUserCreateRequest": {
+      "properties": {
+        "address": {
+          "title": "详细地址",
+          "type": "string"
+        },
+        "country_id": {
+          "title": "国家",
+          "type": "string"
+        },
+        "email": {
+          "title": "邮箱",
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/platform_iamGender",
+          "title": "性别（1：男，0：女，其他）"
+        },
+        "image_url": {
+          "title": "用户头像地址",
+          "type": "string"
+        },
+        "is_admin": {
+          "title": "是否为管理员用户。1表示是，0表示不是",
+          "type": "boolean"
+        },
+        "namespace": {
+          "title": "租户空间（只有平台管理员填）",
+          "type": "string"
+        },
+        "nick_name": {
+          "title": "用户昵称",
+          "type": "string"
+        },
+        "password": {
+          "title": "密码",
+          "type": "string"
+        },
+        "phone": {
+          "title": "手机号",
+          "type": "string"
+        },
+        "username": {
+          "title": "用户名",
+          "type": "string"
+        }
+      },
+      "required": [
+        "image_url",
+        "country_id",
+        "username",
+        "email",
+        "password",
+        "phone",
+        "is_admin",
+        "namespace",
+        "nick_name",
+        "gender",
+        "address"
+      ],
+      "type": "object"
+    },
+    "platform_iamUserCreateResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "userid": {
+          "title": "用户ID",
+          "type": "string"
+        }
+      },
+      "required": ["userid", "code", "msg"],
+      "type": "object"
+    },
+    "platform_iamUserDeleteRequest": {
+      "properties": {
+        "userid": {
+          "title": "用户ID",
+          "type": "string"
+        }
+      },
+      "required": ["userid"],
+      "type": "object"
+    },
+    "platform_iamUserDeleteResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamUserEditRequest": {
+      "properties": {
+        "address": {
+          "title": "详细地址",
+          "type": "string"
+        },
+        "country_id": {
+          "title": "国家",
+          "type": "string"
+        },
+        "email": {
+          "title": "邮箱",
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/platform_iamGender",
+          "title": "性别（1：男，0：女，其他）"
+        },
+        "image_url": {
+          "title": "用户头像地址",
+          "type": "string"
+        },
+        "is_admin": {
+          "title": "是否为管理员用户（1是，0不是）",
+          "type": "boolean"
+        },
+        "locked_until_at": {
+          "format": "int64",
+          "title": "锁定账户截止时间",
+          "type": "string"
+        },
+        "nick_name": {
+          "title": "用户昵称",
+          "type": "string"
+        },
+        "phone": {
+          "title": "手机号",
+          "type": "string"
+        },
+        "userid": {
+          "title": "用户ID",
+          "type": "string"
+        },
+        "username": {
+          "title": "用户名",
+          "type": "string"
+        }
+      },
+      "required": [
+        "phone",
+        "country_id",
+        "address",
+        "locked_until_at",
+        "username",
+        "email",
+        "nick_name",
+        "image_url",
+        "userid",
+        "gender",
+        "is_admin"
+      ],
+      "type": "object"
+    },
+    "platform_iamUserEditResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        }
+      },
+      "required": ["code", "msg"],
+      "type": "object"
+    },
+    "platform_iamUserInfo": {
+      "properties": {
+        "address_detail": {
+          "title": "详细地址",
+          "type": "string"
+        },
+        "country_id": {
+          "title": "国家",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "用户创建时间",
+          "type": "string"
+        },
+        "created_by": {
+          "title": "用户创建者",
+          "type": "string"
+        },
+        "default_tenant_id": {
+          "title": "默认租户ID",
+          "type": "string"
+        },
+        "email": {
+          "title": "邮箱",
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/platform_iamGender",
+          "title": "性别（1：男，0：女，其他）"
+        },
+        "image_url": {
+          "title": "用户头像地址",
+          "type": "string"
+        },
+        "is_admin": {
+          "title": "//是否启用（1启用，0未启用）\n bool is_enabled = 13;\n //是否锁定账户（1锁定，0未锁定）\n bool is_locked = 14;\n是否为管理员用户（1是，0不是）",
+          "type": "boolean"
+        },
+        "locked_until_at": {
+          "format": "date-time",
+          "title": "锁定账户截止时间",
+          "type": "string"
+        },
+        "nick_name": {
+          "title": "用户昵称",
+          "type": "string"
+        },
+        "password_attempt": {
+          "format": "int32",
+          "title": "密码输错累计次数",
+          "type": "integer"
+        },
+        "phone": {
+          "title": "手机号",
+          "type": "string"
+        },
+        "tenant_list": {
+          "items": {
+            "type": "string"
+          },
+          "title": "租户列表",
+          "type": "array"
+        },
+        "updated_at": {
+          "format": "date-time",
+          "title": "用户更新时间",
+          "type": "string"
+        },
+        "updated_by": {
+          "title": "用户更新者",
+          "type": "string"
+        },
+        "userid": {
+          "title": "用户ID",
+          "type": "string"
+        },
+        "username": {
+          "title": "用户名",
+          "type": "string"
+        }
+      },
+      "required": [
+        "created_at",
+        "updated_by",
+        "username",
+        "email",
+        "image_url",
+        "tenant_list",
+        "country_id",
+        "address_detail",
+        "locked_until_at",
+        "gender",
+        "created_by",
+        "userid",
+        "default_tenant_id",
+        "nick_name",
+        "phone",
+        "is_admin",
+        "password_attempt",
+        "updated_at"
+      ],
+      "type": "object"
+    },
+    "platform_iamUserInfoRequest": {
+      "properties": {
+        "userid": {
+          "title": "用户ID",
+          "type": "string"
+        }
+      },
+      "required": ["userid"],
+      "type": "object"
+    },
+    "platform_iamUserInfoResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "user_info": {
+          "$ref": "#/definitions/platform_iamUserInfo",
+          "title": "用户信息"
+        }
+      },
+      "required": ["user_info", "code", "msg"],
+      "type": "object"
+    },
+    "platform_iamUserListRequest": {
+      "properties": {
+        "email": {
+          "title": "用户邮箱",
+          "type": "string"
+        },
+        "organization": {
+          "title": "组织架构",
+          "type": "string"
+        },
+        "page": {
+          "format": "int32",
+          "title": "页数",
+          "type": "integer"
+        },
+        "size": {
+          "format": "int32",
+          "title": "条数",
+          "type": "integer"
+        },
+        "username": {
+          "title": "用户名",
+          "type": "string"
+        }
+      },
+      "required": ["username", "email", "organization", "page", "size"],
+      "type": "object"
+    },
+    "platform_iamUserListResponse": {
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/platform_iamCode",
+          "title": "错误码"
+        },
+        "count": {
+          "format": "int64",
+          "title": "筛选用户条数",
+          "type": "string"
+        },
+        "msg": {
+          "title": "错误信息",
+          "type": "string"
+        },
+        "user_infos": {
+          "items": {
+            "$ref": "#/definitions/platform_iamUserInfo"
+          },
+          "title": "用户信息列表",
+          "type": "array"
+        }
+      },
+      "required": ["code", "msg", "count", "user_infos"],
+      "type": "object"
+    },
+    "platform_iamresource_api": {
+      "properties": {
+        "access_type": {
+          "$ref": "#/definitions/platform_iamAccess"
+        },
+        "api": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      },
+      "required": ["access_type", "key", "api"],
+      "type": "object"
+    },
+    "protobufNullValue": {
+      "default": "NULL_VALUE",
+      "description": "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\n The JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value.",
+      "enum": ["NULL_VALUE"],
+      "properties": {},
+      "required": true,
+      "type": "string"
+    }
+  },
+  "info": {
+    "title": "platform_iam.proto",
+    "version": "version not set"
+  },
+  "paths": {
+    "/rpc/platform-iam/ApplicationMgr.ApplicationCreate": {
+      "post": {
+        "operationId": "ApplicationMgr_ApplicationCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationCreateResponse"
+            }
+          }
+        },
+        "summary": "新建应用",
+        "tags": ["ApplicationMgr"]
+      }
+    },
+    "/rpc/platform-iam/ApplicationMgr.ApplicationDelete": {
+      "post": {
+        "operationId": "ApplicationMgr_ApplicationDelete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationDeleteResponse"
+            }
+          }
+        },
+        "summary": "删除应用",
+        "tags": ["ApplicationMgr"]
+      }
+    },
+    "/rpc/platform-iam/ApplicationMgr.ApplicationDetail": {
+      "post": {
+        "operationId": "ApplicationMgr_ApplicationDetail",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationDetailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationDetailResponse"
+            }
+          }
+        },
+        "summary": "应用详情",
+        "tags": ["ApplicationMgr"]
+      }
+    },
+    "/rpc/platform-iam/ApplicationMgr.ApplicationEdit": {
+      "post": {
+        "operationId": "ApplicationMgr_ApplicationEdit",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationEditResponse"
+            }
+          }
+        },
+        "summary": "编辑应用",
+        "tags": ["ApplicationMgr"]
+      }
+    },
+    "/rpc/platform-iam/ApplicationMgr.ApplicationList": {
+      "post": {
+        "operationId": "ApplicationMgr_ApplicationList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamApplicationListResponse"
+            }
+          }
+        },
+        "summary": "应用列表",
+        "tags": ["ApplicationMgr"]
+      }
+    },
+    "/rpc/platform-iam/IAM.Login": {
+      "post": {
+        "operationId": "IAM_Login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamLoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamLoginResponse"
+            }
+          }
+        },
+        "summary": "用户登录",
+        "tags": ["IAM"]
+      }
+    },
+    "/rpc/platform-iam/IAM.Logout": {
+      "post": {
+        "operationId": "IAM_Logout",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamLogoutRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamLogoutResponse"
+            }
+          }
+        },
+        "summary": "用户登出",
+        "tags": ["IAM"]
+      }
+    },
+    "/rpc/platform-iam/IAM.PermissionList": {
+      "post": {
+        "operationId": "IAM_PermissionList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamPermissionListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamPermissionListResponse"
+            }
+          }
+        },
+        "summary": "用户访问权限列表",
+        "tags": ["IAM"]
+      }
+    },
+    "/rpc/platform-iam/IAM.RefreshToken": {
+      "post": {
+        "operationId": "IAM_RefreshToken",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamRefreshTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamRefreshTokenResponse"
+            }
+          }
+        },
+        "summary": "刷新令牌",
+        "tags": ["IAM"]
+      }
+    },
+    "/rpc/platform-iam/MenuMgr.MenuCreate": {
+      "post": {
+        "operationId": "MenuMgr_MenuCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamMenuCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamMenuCreateResponse"
+            }
+          }
+        },
+        "summary": "新建菜单",
+        "tags": ["MenuMgr"]
+      }
+    },
+    "/rpc/platform-iam/MenuMgr.MenuDelete": {
+      "post": {
+        "operationId": "MenuMgr_MenuDelete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamMenuDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamMenuDeleteResponse"
+            }
+          }
+        },
+        "summary": "删除菜单",
+        "tags": ["MenuMgr"]
+      }
+    },
+    "/rpc/platform-iam/MenuMgr.MenuEdit": {
+      "post": {
+        "operationId": "MenuMgr_MenuEdit",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamMenuEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamMenuEditResponse"
+            }
+          }
+        },
+        "summary": "编辑菜单",
+        "tags": ["MenuMgr"]
+      }
+    },
+    "/rpc/platform-iam/MenuMgr.MenuList": {
+      "post": {
+        "operationId": "MenuMgr_MenuList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamMenuListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamMenuListResponse"
+            }
+          }
+        },
+        "summary": "菜单列表",
+        "tags": ["MenuMgr"]
+      }
+    },
+    "/rpc/platform-iam/ModuleMgr.ModuleCreate": {
+      "post": {
+        "operationId": "ModuleMgr_ModuleCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamModuleCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamModuleCreateResponse"
+            }
+          }
+        },
+        "summary": "新建模块",
+        "tags": ["ModuleMgr"]
+      }
+    },
+    "/rpc/platform-iam/ModuleMgr.ModuleDelete": {
+      "post": {
+        "operationId": "ModuleMgr_ModuleDelete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamModuleDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamModuleDeleteResponse"
+            }
+          }
+        },
+        "summary": "删除模块",
+        "tags": ["ModuleMgr"]
+      }
+    },
+    "/rpc/platform-iam/ModuleMgr.ModuleEdit": {
+      "post": {
+        "operationId": "ModuleMgr_ModuleEdit",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamModuleEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamModuleEditResponse"
+            }
+          }
+        },
+        "summary": "编辑模块",
+        "tags": ["ModuleMgr"]
+      }
+    },
+    "/rpc/platform-iam/ModuleMgr.ModuleList": {
+      "post": {
+        "operationId": "ModuleMgr_ModuleList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamModuleListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamModuleListResponse"
+            }
+          }
+        },
+        "summary": "模块列表",
+        "tags": ["ModuleMgr"]
+      }
+    },
+    "/rpc/platform-iam/ProjectMgr.ProjectCreate": {
+      "post": {
+        "operationId": "ProjectMgr_ProjectCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectCreateResponse"
+            }
+          }
+        },
+        "summary": "新建项目",
+        "tags": ["ProjectMgr"]
+      }
+    },
+    "/rpc/platform-iam/ProjectMgr.ProjectDelete": {
+      "post": {
+        "operationId": "ProjectMgr_ProjectDelete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectDeleteResponse"
+            }
+          }
+        },
+        "summary": "删除项目",
+        "tags": ["ProjectMgr"]
+      }
+    },
+    "/rpc/platform-iam/ProjectMgr.ProjectDetail": {
+      "post": {
+        "operationId": "ProjectMgr_ProjectDetail",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectDetailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectDetailResponse"
+            }
+          }
+        },
+        "summary": "项目详情",
+        "tags": ["ProjectMgr"]
+      }
+    },
+    "/rpc/platform-iam/ProjectMgr.ProjectEdit": {
+      "post": {
+        "operationId": "ProjectMgr_ProjectEdit",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectEditResponse"
+            }
+          }
+        },
+        "summary": "编辑项目",
+        "tags": ["ProjectMgr"]
+      }
+    },
+    "/rpc/platform-iam/ProjectMgr.ProjectList": {
+      "post": {
+        "operationId": "ProjectMgr_ProjectList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamProjectListResponse"
+            }
+          }
+        },
+        "summary": "项目列表",
+        "tags": ["ProjectMgr"]
+      }
+    },
+    "/rpc/platform-iam/ResourceMgr.ResourceCreate": {
+      "post": {
+        "operationId": "ResourceMgr_ResourceCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceCreateResponse"
+            }
+          }
+        },
+        "summary": "创建资源",
+        "tags": ["ResourceMgr"]
+      }
+    },
+    "/rpc/platform-iam/ResourceMgr.ResourceDelete": {
+      "post": {
+        "operationId": "ResourceMgr_ResourceDelete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceDeleteResponse"
+            }
+          }
+        },
+        "summary": "删除资源",
+        "tags": ["ResourceMgr"]
+      }
+    },
+    "/rpc/platform-iam/ResourceMgr.ResourceEdit": {
+      "post": {
+        "operationId": "ResourceMgr_ResourceEdit",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceEditResponse"
+            }
+          }
+        },
+        "summary": "编辑资源",
+        "tags": ["ResourceMgr"]
+      }
+    },
+    "/rpc/platform-iam/ResourceMgr.ResourceInfo": {
+      "post": {
+        "operationId": "ResourceMgr_ResourceInfo",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceInfoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceInfoResponse"
+            }
+          }
+        },
+        "summary": "资源详情",
+        "tags": ["ResourceMgr"]
+      }
+    },
+    "/rpc/platform-iam/ResourceMgr.ResourceList": {
+      "post": {
+        "operationId": "ResourceMgr_ResourceList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamResourceListResponse"
+            }
+          }
+        },
+        "summary": "资源列表查询",
+        "tags": ["ResourceMgr"]
+      }
+    },
+    "/rpc/platform-iam/RoleMgr.QueryRoleResources": {
+      "post": {
+        "operationId": "RoleMgr_QueryRoleResources",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamQueryRoleResourcesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamQueryRoleResourcesResponse"
+            }
+          }
+        },
+        "summary": "角色资源权限查询",
+        "tags": ["RoleMgr"]
+      }
+    },
+    "/rpc/platform-iam/RoleMgr.RoleAssignPermission": {
+      "post": {
+        "operationId": "RoleMgr_RoleAssignPermission",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleAssignPermissionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleAssignPermissionResponse"
+            }
+          }
+        },
+        "summary": "角色分配权限",
+        "tags": ["RoleMgr"]
+      }
+    },
+    "/rpc/platform-iam/RoleMgr.RoleCreate": {
+      "post": {
+        "operationId": "RoleMgr_RoleCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleCreateResponse"
+            }
+          }
+        },
+        "summary": "创建角色",
+        "tags": ["RoleMgr"]
+      }
+    },
+    "/rpc/platform-iam/RoleMgr.RoleDelete": {
+      "post": {
+        "operationId": "RoleMgr_RoleDelete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleDeleteResponse"
+            }
+          }
+        },
+        "summary": "删除角色",
+        "tags": ["RoleMgr"]
+      }
+    },
+    "/rpc/platform-iam/RoleMgr.RoleEdit": {
+      "post": {
+        "operationId": "RoleMgr_RoleEdit",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleEditResponse"
+            }
+          }
+        },
+        "summary": "编辑角色",
+        "tags": ["RoleMgr"]
+      }
+    },
+    "/rpc/platform-iam/RoleMgr.RoleInfo": {
+      "post": {
+        "operationId": "RoleMgr_RoleInfo",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleInfoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleInfoResponse"
+            }
+          }
+        },
+        "summary": "角色详情",
+        "tags": ["RoleMgr"]
+      }
+    },
+    "/rpc/platform-iam/RoleMgr.RoleList": {
+      "post": {
+        "operationId": "RoleMgr_RoleList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamRoleListResponse"
+            }
+          }
+        },
+        "summary": "角色列表查询",
+        "tags": ["RoleMgr"]
+      }
+    },
+    "/rpc/platform-iam/RoleMgr.RolePermissionList": {
+      "post": {
+        "operationId": "RoleMgr_RolePermissionList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamRolePermissionListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamRolePermissionListResponse"
+            }
+          }
+        },
+        "summary": "角色权限列表",
+        "tags": ["RoleMgr"]
+      }
+    },
+    "/rpc/platform-iam/TenantMgr.TenantCreate": {
+      "post": {
+        "operationId": "TenantMgr_TenantCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantCreateResponse"
+            }
+          }
+        },
+        "summary": "新建租户",
+        "tags": ["TenantMgr"]
+      }
+    },
+    "/rpc/platform-iam/TenantMgr.TenantDelete": {
+      "post": {
+        "operationId": "TenantMgr_TenantDelete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantDeleteResponse"
+            }
+          }
+        },
+        "summary": "删除租户",
+        "tags": ["TenantMgr"]
+      }
+    },
+    "/rpc/platform-iam/TenantMgr.TenantEdit": {
+      "post": {
+        "operationId": "TenantMgr_TenantEdit",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantEditResponse"
+            }
+          }
+        },
+        "summary": "编辑租户",
+        "tags": ["TenantMgr"]
+      }
+    },
+    "/rpc/platform-iam/TenantMgr.TenantInfo": {
+      "post": {
+        "operationId": "TenantMgr_TenantInfo",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantInfoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantInfoResponse"
+            }
+          }
+        },
+        "summary": "租户详情",
+        "tags": ["TenantMgr"]
+      }
+    },
+    "/rpc/platform-iam/TenantMgr.TenantList": {
+      "post": {
+        "operationId": "TenantMgr_TenantList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamTenantListResponse"
+            }
+          }
+        },
+        "summary": "租户列表查询",
+        "tags": ["TenantMgr"]
+      }
+    },
+    "/rpc/platform-iam/UserMgr.QueryUserRoles": {
+      "post": {
+        "operationId": "UserMgr_QueryUserRoles",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamQueryUserRolesRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamQueryUserRolesResponse"
+            }
+          }
+        },
+        "summary": "用户角色查询",
+        "tags": ["UserMgr"]
+      }
+    },
+    "/rpc/platform-iam/UserMgr.UpdatePassword": {
+      "post": {
+        "operationId": "UserMgr_UpdatePassword",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamUpdatePasswordRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamUpdatePasswordResponse"
+            }
+          }
+        },
+        "summary": "更新用户密码",
+        "tags": ["UserMgr"]
+      }
+    },
+    "/rpc/platform-iam/UserMgr.UserAssignRole": {
+      "post": {
+        "operationId": "UserMgr_UserAssignRole",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserAssignRoleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserAssignRoleResponse"
+            }
+          }
+        },
+        "summary": "用户分配角色",
+        "tags": ["UserMgr"]
+      }
+    },
+    "/rpc/platform-iam/UserMgr.UserCreate": {
+      "post": {
+        "operationId": "UserMgr_UserCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserCreateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserCreateResponse"
+            }
+          }
+        },
+        "summary": "新建用户",
+        "tags": ["UserMgr"]
+      }
+    },
+    "/rpc/platform-iam/UserMgr.UserDelete": {
+      "post": {
+        "operationId": "UserMgr_UserDelete",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserDeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserDeleteResponse"
+            }
+          }
+        },
+        "summary": "删除用户",
+        "tags": ["UserMgr"]
+      }
+    },
+    "/rpc/platform-iam/UserMgr.UserEdit": {
+      "post": {
+        "operationId": "UserMgr_UserEdit",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserEditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserEditResponse"
+            }
+          }
+        },
+        "summary": "编辑用户",
+        "tags": ["UserMgr"]
+      }
+    },
+    "/rpc/platform-iam/UserMgr.UserInfo": {
+      "post": {
+        "operationId": "UserMgr_UserInfo",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserInfoRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserInfoResponse"
+            }
+          }
+        },
+        "summary": "用户详情",
+        "tags": ["UserMgr"]
+      }
+    },
+    "/rpc/platform-iam/UserMgr.UserList": {
+      "post": {
+        "operationId": "UserMgr_UserList",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserListRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/platform_iamUserListResponse"
+            }
+          }
+        },
+        "summary": "用户列表查询",
+        "tags": ["UserMgr"]
+      }
+    }
+  },
+  "produces": ["application/json"],
+  "schemes": ["http", "https"],
+  "swagger": "2.0"
+}

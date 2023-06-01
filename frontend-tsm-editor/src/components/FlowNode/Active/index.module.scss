@@ -1,0 +1,103 @@
+@import '~@/style/var.scss';
+
+.line {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.border {
+  border: 1px solid #3188db;
+}
+
+.hide {
+  display: none !important;
+}
+
+.wrap {
+  position: relative;
+  flex-shrink: 0;
+  position: relative;
+  display: inline-flex;
+  padding: 1rem;
+}
+
+.right,
+.left {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left {
+  left: 0rem;
+}
+
+.right {
+  right: 0rem;
+}
+
+.tab {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #3188db;
+  background: #fff;
+}
+
+.center {
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.centerTop {
+  top: 0;
+}
+
+.centerBottom {
+  bottom: 0;
+}
+
+.add {
+  position: absolute;
+  cursor: pointer;
+  background: #5d87b1;
+  color: #fff;
+  transform: translateY(-50%);
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  border-radius: 50%;
+}
+.add:hover {
+  background: #8bb1d8;
+}
+.addtop {
+  z-index: 1;
+  left: 50%;
+  top: -2.2rem;
+  transform: translateX(-50%);
+}
+.addbottom {
+  left: 50%;
+  bottom: -2.2rem;
+  transform: translateX(-50%);
+}
+.addleft {
+  top: 50%;
+  left: -2.6rem;
+  transform: translateY(-50%);
+}
+.addright {
+  top: 50%;
+  right: -2.6rem;
+  transform: translateY(-50%);
+}

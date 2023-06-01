@@ -1,0 +1,918 @@
+{
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"FlagStatusSTATUS": {
+			"default": "NOT_DETECT",
+			"description": "- NOT_DETECT: 未检测\n - DETECTING: 检测中\n - DETECTED: 检测完成\n - ERROR: 故障中\n - PAUSING: 暂停中",
+			"enum": [
+				"NOT_DETECT",
+				"DETECTING",
+				"DETECTED",
+				"ERROR",
+				"PAUSING"
+			],
+			"properties": {},
+			"required": true,
+			"title": "状态",
+			"type": "string"
+		},
+		"InspectionOperationRequestOPERATION_TYPE": {
+			"default": "NO_OPERATION_TYPE",
+			"description": "- NO_OPERATION_TYPE: 无\n - DETECT: 开始检测\n - PAUSE: 暂停\n - CONTINUE: 继续\n - STOP: 终止\n - SWITCH: 切换楼层",
+			"enum": [
+				"NO_OPERATION_TYPE",
+				"DETECT",
+				"PAUSE",
+				"CONTINUE",
+				"STOP",
+				"SWITCH"
+			],
+			"properties": {},
+			"required": true,
+			"title": "操作类型",
+			"type": "string"
+		},
+		"InspectionStatusResponseFlagStatus": {
+			"properties": {
+				"flag": {
+					"title": "区域名称",
+					"type": "string"
+				},
+				"status": {
+					"$ref": "#/definitions/FlagStatusSTATUS",
+					"title": "状态"
+				},
+				"timestamp": {
+					"format": "int64",
+					"title": "检测完成时间",
+					"type": "string"
+				}
+			},
+			"required": [
+				"status",
+				"timestamp",
+				"flag"
+			],
+			"title": "区域状态",
+			"type": "object"
+		},
+		"InspectionStatusResponseROBOT_STATUS": {
+			"default": "OFFLINE",
+			"description": "- OFFLINE: 离线\n - FREE: 空闲\n - RUNNING: 运动中\n - DETECTING: 检测中",
+			"enum": [
+				"OFFLINE",
+				"FREE",
+				"RUNNING",
+				"DETECTING"
+			],
+			"properties": {},
+			"required": true,
+			"title": "机器人状态",
+			"type": "string"
+		},
+		"InspectionStatusResponseTASK_STATUS": {
+			"default": "NO_TASK",
+			"description": "- NO_TASK: 无任务\n - TASKING: 检测任务中\n - PAUSING: 暂停中",
+			"enum": [
+				"NO_TASK",
+				"TASKING",
+				"PAUSING"
+			],
+			"properties": {},
+			"required": true,
+			"title": "任务状态",
+			"type": "string"
+		},
+		"RobotQueueRequestOPERATION": {
+			"default": "NO_OPERATION",
+			"enum": [
+				"NO_OPERATION",
+				"START",
+				"STOP"
+			],
+			"properties": {},
+			"required": true,
+			"type": "string"
+		},
+		"robot_demoCODE": {
+			"default": "OK",
+			"enum": [
+				"OK",
+				"FAILED"
+			],
+			"properties": {},
+			"required": true,
+			"type": "string"
+		},
+		"robot_demoCloseDoorRequest": {
+			"properties": {},
+			"required": true,
+			"type": "object"
+		},
+		"robot_demoCloseDoorResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"robot_demoExportTVOCRequest": {
+			"properties": {
+				"end_time": {
+					"format": "int64",
+					"title": "结束时间",
+					"type": "string"
+				},
+				"start_time": {
+					"format": "int64",
+					"title": "开始时间",
+					"type": "string"
+				}
+			},
+			"required": [
+				"start_time",
+				"end_time"
+			],
+			"type": "object"
+		},
+		"robot_demoExportTVOCResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"file_url": {
+					"title": "导出文件url",
+					"type": "string"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"file_url",
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"robot_demoGetTVOC10EffectHistoryDataRequest": {
+			"properties": {
+				"flags": {
+					"items": {
+						"type": "string"
+					},
+					"title": "flag",
+					"type": "array"
+				}
+			},
+			"required": [
+				"flags"
+			],
+			"type": "object"
+		},
+		"robot_demoGetTVOC10EffectHistoryDataResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"data": {
+					"items": {
+						"$ref": "#/definitions/robot_demoTVOC"
+					},
+					"title": "甲醛信息列表",
+					"type": "array"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"data"
+			],
+			"type": "object"
+		},
+		"robot_demoGetTVOC10EffectLatestDataRequest": {
+			"properties": {},
+			"required": true,
+			"type": "object"
+		},
+		"robot_demoGetTVOC10EffectLatestDataResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"data": {
+					"items": {
+						"$ref": "#/definitions/robot_demoTVOC"
+					},
+					"title": "甲醛信息列表",
+					"type": "array"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"data"
+			],
+			"type": "object"
+		},
+		"robot_demoGetTVOCByFlagRequest": {
+			"properties": {
+				"flags": {
+					"items": {
+						"type": "string"
+					},
+					"title": "区域列表",
+					"type": "array"
+				}
+			},
+			"required": [
+				"flags"
+			],
+			"type": "object"
+		},
+		"robot_demoGetTVOCByFlagResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"data": {
+					"items": {
+						"$ref": "#/definitions/robot_demoTVOC"
+					},
+					"title": "甲醛信息列表",
+					"type": "array"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"msg",
+				"data",
+				"code"
+			],
+			"type": "object"
+		},
+		"robot_demoGetTVOCFlagLatestRequest": {
+			"properties": {},
+			"required": true,
+			"type": "object"
+		},
+		"robot_demoGetTVOCFlagLatestResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"data": {
+					"items": {
+						"$ref": "#/definitions/robot_demoTVOC"
+					},
+					"title": "甲醛信息列表",
+					"type": "array"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"data"
+			],
+			"type": "object"
+		},
+		"robot_demoInspectionGoToOriginRequest": {
+			"properties": {},
+			"required": true,
+			"type": "object"
+		},
+		"robot_demoInspectionGoToOriginResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"robot_demoInspectionInitRequest": {
+			"properties": {
+				"floor": {
+					"format": "int32",
+					"title": "楼层",
+					"type": "integer"
+				}
+			},
+			"required": [
+				"floor"
+			],
+			"type": "object"
+		},
+		"robot_demoInspectionInitResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"robot_demoInspectionOperationRequest": {
+			"properties": {
+				"areas": {
+					"items": {
+						"type": "string"
+					},
+					"title": "待检测区域",
+					"type": "array"
+				},
+				"floor": {
+					"format": "int32",
+					"title": "楼层",
+					"type": "integer"
+				},
+				"operation_type": {
+					"$ref": "#/definitions/InspectionOperationRequestOPERATION_TYPE",
+					"title": "操作类型"
+				}
+			},
+			"required": [
+				"operation_type",
+				"areas",
+				"floor"
+			],
+			"type": "object"
+		},
+		"robot_demoInspectionOperationResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"robot_demoInspectionStatusRequest": {
+			"properties": {},
+			"required": true,
+			"type": "object"
+		},
+		"robot_demoInspectionStatusResponse": {
+			"properties": {
+				"areas": {
+					"items": {
+						"type": "string"
+					},
+					"title": "当前检测任务的点列表",
+					"type": "array"
+				},
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"ff_area_status": {
+					"items": {
+						"$ref": "#/definitions/InspectionStatusResponseFlagStatus"
+					},
+					"title": "一楼区域点状态",
+					"type": "array"
+				},
+				"location": {
+					"title": "机器人所在楼层",
+					"type": "string"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				},
+				"robot_status": {
+					"$ref": "#/definitions/InspectionStatusResponseROBOT_STATUS",
+					"title": "机器人状态"
+				},
+				"sf_area_status": {
+					"items": {
+						"$ref": "#/definitions/InspectionStatusResponseFlagStatus"
+					},
+					"title": "二楼区域点状态",
+					"type": "array"
+				},
+				"task_status": {
+					"$ref": "#/definitions/InspectionStatusResponseTASK_STATUS",
+					"title": "任务状态"
+				},
+				"tf_area_status": {
+					"items": {
+						"$ref": "#/definitions/InspectionStatusResponseFlagStatus"
+					},
+					"title": "三楼区域点状态",
+					"type": "array"
+				}
+			},
+			"required": [
+				"ff_area_status",
+				"sf_area_status",
+				"code",
+				"msg",
+				"robot_status",
+				"task_status",
+				"location",
+				"tf_area_status",
+				"areas"
+			],
+			"type": "object"
+		},
+		"robot_demoRobotQueueRequest": {
+			"properties": {
+				"operation": {
+					"$ref": "#/definitions/RobotQueueRequestOPERATION",
+					"title": "操作"
+				},
+				"robot_ids": {
+					"items": {
+						"type": "string"
+					},
+					"title": "机器人id列表",
+					"type": "array"
+				}
+			},
+			"required": [
+				"robot_ids",
+				"operation"
+			],
+			"type": "object"
+		},
+		"robot_demoRobotQueueResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"robot_demoStepOpRequest": {
+			"properties": {
+				"step": {
+					"format": "int32",
+					"title": "步骤",
+					"type": "integer"
+				}
+			},
+			"required": [
+				"step"
+			],
+			"type": "object"
+		},
+		"robot_demoStepOpResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/robot_demoCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误消息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"robot_demoTVOC": {
+			"properties": {
+				"flag": {
+					"title": "区域名",
+					"type": "string"
+				},
+				"methanal": {
+					"format": "float",
+					"title": "甲醛数值",
+					"type": "number"
+				},
+				"time": {
+					"title": "时间格式化",
+					"type": "string"
+				},
+				"timestamp": {
+					"format": "int64",
+					"title": "上报时间",
+					"type": "string"
+				},
+				"tvoc": {
+					"format": "float",
+					"title": "tvoc数值",
+					"type": "number"
+				}
+			},
+			"required": [
+				"flag",
+				"timestamp",
+				"time",
+				"methanal",
+				"tvoc"
+			],
+			"title": "甲醛结构",
+			"type": "object"
+		}
+	},
+	"info": {
+		"title": "proto/robot-demo/robot_demo.proto",
+		"version": "version not set"
+	},
+	"paths": {
+		"/rpc/robot-demo/RobotDemo.CloseDoor": {
+			"post": {
+				"operationId": "RobotDemo_CloseDoor",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoCloseDoorRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoCloseDoorResponse"
+						}
+					}
+				},
+				"summary": "配送机器人关舱门",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.ExportTVOC": {
+			"post": {
+				"operationId": "RobotDemo_ExportTVOC",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoExportTVOCRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoExportTVOCResponse"
+						}
+					}
+				},
+				"summary": "甲醛记录导出",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.GetTVOC10EffectHistoryData": {
+			"post": {
+				"operationId": "RobotDemo_GetTVOC10EffectHistoryData",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoGetTVOC10EffectHistoryDataRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoGetTVOC10EffectHistoryDataResponse"
+						}
+					}
+				},
+				"summary": "获取10天有效的点的历史数据",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.GetTVOC10EffectLatestData": {
+			"post": {
+				"operationId": "RobotDemo_GetTVOC10EffectLatestData",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoGetTVOC10EffectLatestDataRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoGetTVOC10EffectLatestDataResponse"
+						}
+					}
+				},
+				"summary": "获取10天有效的点的最新数据",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.GetTVOCByFlag": {
+			"post": {
+				"operationId": "RobotDemo_GetTVOCByFlag",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoGetTVOCByFlagRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoGetTVOCByFlagResponse"
+						}
+					}
+				},
+				"summary": "根据flag获取最新的10条数据",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.GetTVOCFlagLatest": {
+			"post": {
+				"operationId": "RobotDemo_GetTVOCFlagLatest",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoGetTVOCFlagLatestRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoGetTVOCFlagLatestResponse"
+						}
+					}
+				},
+				"summary": "获取所有flag当前最新的数据",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.InspectionGoToOrigin": {
+			"post": {
+				"operationId": "RobotDemo_InspectionGoToOrigin",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoInspectionGoToOriginRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoInspectionGoToOriginResponse"
+						}
+					}
+				},
+				"summary": "巡检机器人回原点",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.InspectionInit": {
+			"post": {
+				"operationId": "RobotDemo_InspectionInit",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoInspectionInitRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoInspectionInitResponse"
+						}
+					}
+				},
+				"summary": "巡检机器人初始化",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.InspectionOperation": {
+			"post": {
+				"operationId": "RobotDemo_InspectionOperation",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoInspectionOperationRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoInspectionOperationResponse"
+						}
+					}
+				},
+				"summary": "巡检机器人操作",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.InspectionStatus": {
+			"post": {
+				"operationId": "RobotDemo_InspectionStatus",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoInspectionStatusRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoInspectionStatusResponse"
+						}
+					}
+				},
+				"summary": "巡检状态显示",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.RobotQueue": {
+			"post": {
+				"operationId": "RobotDemo_RobotQueue",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoRobotQueueRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoRobotQueueResponse"
+						}
+					}
+				},
+				"summary": "机器人队列任务",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		},
+		"/rpc/robot-demo/RobotDemo.StepOp": {
+			"post": {
+				"operationId": "RobotDemo_StepOp",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/robot_demoStepOpRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/robot_demoStepOpResponse"
+						}
+					}
+				},
+				"summary": "配送水操作步骤",
+				"tags": [
+					"RobotDemo"
+				]
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"schemes": [
+		"http",
+		"https"
+	],
+	"swagger": "2.0"
+}

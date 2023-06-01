@@ -1,0 +1,705 @@
+{
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"meetingAddBookingRequest": {
+			"properties": {
+				"booking_end": {
+					"title": "结束时间",
+					"type": "string"
+				},
+				"booking_start": {
+					"title": "开始时间",
+					"type": "string"
+				},
+				"meeting_num": {
+					"format": "int64",
+					"title": "参会人数",
+					"type": "string"
+				},
+				"meeting_title": {
+					"title": "会议主题",
+					"type": "string"
+				},
+				"room_id": {
+					"title": "会议室id",
+					"type": "string"
+				},
+				"room_name": {
+					"title": "会议室名称",
+					"type": "string"
+				},
+				"user_id": {
+					"format": "int64",
+					"title": "预定者id",
+					"type": "string"
+				},
+				"user_name": {
+					"title": "预定者名称",
+					"type": "string"
+				}
+			},
+			"required": [
+				"user_name",
+				"room_id",
+				"room_name",
+				"booking_start",
+				"booking_end",
+				"meeting_title",
+				"meeting_num",
+				"user_id"
+			],
+			"title": "增加预定记录",
+			"type": "object"
+		},
+		"meetingAddBookingResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/meetingCode"
+				},
+				"msg": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"meetingBooking": {
+			"properties": {
+				"booking_end": {
+					"title": "结束时间",
+					"type": "string"
+				},
+				"booking_start": {
+					"title": "开始时间",
+					"type": "string"
+				},
+				"id": {
+					"title": "预定id",
+					"type": "string"
+				},
+				"meeting_num": {
+					"format": "int64",
+					"title": "参会人数",
+					"type": "string"
+				},
+				"meeting_title": {
+					"title": "会议主题",
+					"type": "string"
+				},
+				"room_id": {
+					"title": "会议室id",
+					"type": "string"
+				},
+				"room_name": {
+					"title": "会议室名称",
+					"type": "string"
+				},
+				"update_time": {
+					"title": "更新日期",
+					"type": "string"
+				},
+				"user_id": {
+					"format": "int64",
+					"title": "预定者id",
+					"type": "string"
+				},
+				"user_name": {
+					"title": "预定者名称",
+					"type": "string"
+				}
+			},
+			"required": [
+				"update_time",
+				"booking_start",
+				"booking_end",
+				"meeting_num",
+				"room_name",
+				"room_id",
+				"id",
+				"meeting_title",
+				"user_id",
+				"user_name"
+			],
+			"type": "object"
+		},
+		"meetingCode": {
+			"default": "OK",
+			"enum": [
+				"OK",
+				"INVALID_PARAMS",
+				"TOKEN_AUTH_FAILURE",
+				"INTERNAL_ERROR",
+				"NO_ACCESS_PERMISSION",
+				"OPERATING_FAILURE"
+			],
+			"properties": {},
+			"required": true,
+			"title": "- OK: 正常返回\n - INVALID_PARAMS: 参数不合法\n - TOKEN_AUTH_FAILURE: Token无效或已过期\n - INTERNAL_ERROR: 内部错误\n - NO_ACCESS_PERMISSION: 无访问权限\n - OPERATING_FAILURE: 操作失败",
+			"type": "string"
+		},
+		"meetingDelBookingRequest": {
+			"properties": {
+				"booking_id": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"booking_id"
+			],
+			"title": "删除预定记录",
+			"type": "object"
+		},
+		"meetingDelBookingResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/meetingCode"
+				},
+				"msg": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"meetingGetMeetingRoomRequest": {
+			"properties": {
+				"room_id": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"room_id"
+			],
+			"title": "根据room id 获取会议室",
+			"type": "object"
+		},
+		"meetingGetMeetingRoomResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/meetingCode"
+				},
+				"msg": {
+					"type": "string"
+				},
+				"rooms": {
+					"$ref": "#/definitions/meetingRoom"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"rooms"
+			],
+			"type": "object"
+		},
+		"meetingRoom": {
+			"properties": {
+				"address": {
+					"title": "会议室地址",
+					"type": "string"
+				},
+				"bookings": {
+					"items": {
+						"$ref": "#/definitions/meetingBooking"
+					},
+					"title": "会议室已经预约的时间段",
+					"type": "array"
+				},
+				"capacity": {
+					"format": "int64",
+					"title": "可容纳人数",
+					"type": "string"
+				},
+				"conf": {
+					"items": {
+						"type": "string"
+					},
+					"title": "会议室配置",
+					"type": "array"
+				},
+				"id": {
+					"title": "会议室名称",
+					"type": "string"
+				},
+				"img_url": {
+					"title": "会议室图片url",
+					"type": "string"
+				},
+				"name": {
+					"title": "会议室名称",
+					"type": "string"
+				},
+				"status": {
+					"format": "int64",
+					"title": "是否需要审批",
+					"type": "string"
+				}
+			},
+			"required": [
+				"name",
+				"conf",
+				"address",
+				"capacity",
+				"img_url",
+				"status",
+				"bookings",
+				"id"
+			],
+			"type": "object"
+		},
+		"meetingRoomStatus": {
+			"properties": {
+				"name": {
+					"title": "会议室名称",
+					"type": "string"
+				},
+				"room_id": {
+					"title": "会议室id",
+					"type": "string"
+				},
+				"status": {
+					"format": "int64",
+					"title": "会议室状态",
+					"type": "string"
+				}
+			},
+			"required": [
+				"room_id",
+				"name",
+				"status"
+			],
+			"type": "object"
+		},
+		"meetingSearchBookingRequest": {
+			"properties": {
+				"booking_date": {
+					"title": "预约日期",
+					"type": "string"
+				},
+				"page": {
+					"format": "int64",
+					"title": "页数",
+					"type": "string"
+				},
+				"size": {
+					"format": "int64",
+					"title": "分页大小",
+					"type": "string"
+				},
+				"user_id": {
+					"title": "用户id",
+					"type": "string"
+				},
+				"user_name": {
+					"title": "用户名称",
+					"type": "string"
+				}
+			},
+			"required": [
+				"page",
+				"user_name",
+				"user_id",
+				"booking_date",
+				"size"
+			],
+			"title": "查询预定记录",
+			"type": "object"
+		},
+		"meetingSearchBookingResponse": {
+			"properties": {
+				"bookings": {
+					"items": {
+						"$ref": "#/definitions/meetingBooking"
+					},
+					"type": "array"
+				},
+				"code": {
+					"$ref": "#/definitions/meetingCode"
+				},
+				"count": {
+					"format": "int64",
+					"type": "string"
+				},
+				"msg": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"count",
+				"bookings"
+			],
+			"type": "object"
+		},
+		"meetingSearchMeetingRoomsRequest": {
+			"properties": {
+				"conf": {
+					"items": {
+						"type": "string"
+					},
+					"title": "会议室配置",
+					"type": "array"
+				},
+				"end_time": {
+					"title": "预约时间",
+					"type": "string"
+				},
+				"name": {
+					"title": "会议室名称",
+					"type": "string"
+				},
+				"start_time": {
+					"title": "预约时间",
+					"type": "string"
+				}
+			},
+			"required": [
+				"conf",
+				"start_time",
+				"end_time",
+				"name"
+			],
+			"type": "object"
+		},
+		"meetingSearchMeetingRoomsResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/meetingCode"
+				},
+				"msg": {
+					"type": "string"
+				},
+				"rooms": {
+					"items": {
+						"$ref": "#/definitions/meetingRoom"
+					},
+					"type": "array"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"rooms"
+			],
+			"type": "object"
+		},
+		"meetingSearchRoomStatusRequest": {
+			"properties": {
+				"room_id": {
+					"items": {
+						"type": "string"
+					},
+					"title": "会议室id",
+					"type": "array"
+				}
+			},
+			"required": [
+				"room_id"
+			],
+			"type": "object"
+		},
+		"meetingSearchRoomStatusResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/meetingCode"
+				},
+				"msg": {
+					"type": "string"
+				},
+				"roomStatus": {
+					"items": {
+						"$ref": "#/definitions/meetingRoomStatus"
+					},
+					"type": "array"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"roomStatus"
+			],
+			"type": "object"
+		},
+		"meetingUpdateBookingRequest": {
+			"properties": {
+				"booking_end": {
+					"title": "结束时间",
+					"type": "string"
+				},
+				"booking_start": {
+					"title": "开始时间",
+					"type": "string"
+				},
+				"id": {
+					"title": "预定id",
+					"type": "string"
+				},
+				"meeting_num": {
+					"format": "int64",
+					"title": "参会人数",
+					"type": "string"
+				},
+				"meeting_title": {
+					"title": "会议主题",
+					"type": "string"
+				},
+				"room_id": {
+					"title": "会议室id",
+					"type": "string"
+				},
+				"room_name": {
+					"title": "会议室名称",
+					"type": "string"
+				},
+				"user_id": {
+					"format": "int64",
+					"title": "预定者id",
+					"type": "string"
+				},
+				"user_name": {
+					"title": "预定者名称",
+					"type": "string"
+				}
+			},
+			"required": [
+				"id",
+				"booking_start",
+				"booking_end",
+				"user_id",
+				"user_name",
+				"room_id",
+				"room_name",
+				"meeting_title",
+				"meeting_num"
+			],
+			"type": "object"
+		},
+		"meetingUpdateBookingResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/meetingCode"
+				},
+				"msg": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		}
+	},
+	"info": {
+		"title": "meeting.proto",
+		"version": "version not set"
+	},
+	"paths": {
+		"/rpc/platform-meeting/Meeting.AddBooking": {
+			"post": {
+				"operationId": "Meeting_AddBooking",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/meetingAddBookingRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/meetingAddBookingResponse"
+						}
+					}
+				},
+				"summary": "增加预定记录",
+				"tags": [
+					"Meeting"
+				]
+			}
+		},
+		"/rpc/platform-meeting/Meeting.DelBooking": {
+			"post": {
+				"operationId": "Meeting_DelBooking",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/meetingDelBookingRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/meetingDelBookingResponse"
+						}
+					}
+				},
+				"summary": "删除预定记录",
+				"tags": [
+					"Meeting"
+				]
+			}
+		},
+		"/rpc/platform-meeting/Meeting.GetMeetingRoom": {
+			"post": {
+				"operationId": "Meeting_GetMeetingRoom",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/meetingGetMeetingRoomRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/meetingGetMeetingRoomResponse"
+						}
+					}
+				},
+				"summary": "根据room id 获取会议室",
+				"tags": [
+					"Meeting"
+				]
+			}
+		},
+		"/rpc/platform-meeting/Meeting.SearchBooking": {
+			"post": {
+				"operationId": "Meeting_SearchBooking",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/meetingSearchBookingRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/meetingSearchBookingResponse"
+						}
+					}
+				},
+				"summary": "查询预定记录",
+				"tags": [
+					"Meeting"
+				]
+			}
+		},
+		"/rpc/platform-meeting/Meeting.SearchMeetingRooms": {
+			"post": {
+				"operationId": "Meeting_SearchMeetingRooms",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/meetingSearchMeetingRoomsRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/meetingSearchMeetingRoomsResponse"
+						}
+					}
+				},
+				"summary": "获取会议室列表",
+				"tags": [
+					"Meeting"
+				]
+			}
+		},
+		"/rpc/platform-meeting/Meeting.SearchRoomStatus": {
+			"post": {
+				"operationId": "Meeting_SearchRoomStatus",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/meetingSearchRoomStatusRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/meetingSearchRoomStatusResponse"
+						}
+					}
+				},
+				"summary": "获取会议室状态信息",
+				"tags": [
+					"Meeting"
+				]
+			}
+		},
+		"/rpc/platform-meeting/Meeting.UpdateBooking": {
+			"post": {
+				"operationId": "Meeting_UpdateBooking",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/meetingUpdateBookingRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/meetingUpdateBookingResponse"
+						}
+					}
+				},
+				"summary": "更新预定记录",
+				"tags": [
+					"Meeting"
+				]
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"schemes": [
+		"http",
+		"https"
+	],
+	"swagger": "2.0"
+}

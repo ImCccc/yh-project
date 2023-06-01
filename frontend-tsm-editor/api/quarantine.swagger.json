@@ -1,0 +1,1315 @@
+{
+	"consumes": [
+		"application/json"
+	],
+	"definitions": {
+		"DivByPeriodPeriod": {
+			"default": "P_OTo2",
+			"enum": [
+				"P_OTo2",
+				"P_2To4",
+				"P_4To6",
+				"P_6To8",
+				"P_8To10",
+				"P_10To12",
+				"P_12To14",
+				"P_14To16",
+				"P_16To18",
+				"P_18To20",
+				"P_20To22",
+				"P_22To24"
+			],
+			"properties": {},
+			"required": true,
+			"title": "时段",
+			"type": "string"
+		},
+		"GetStatisticDivByDayResponseDivByDay": {
+			"properties": {
+				"day": {
+					"title": "时间格式：20210721",
+					"type": "string"
+				},
+				"statistic": {
+					"$ref": "#/definitions/quarantineStatisticData",
+					"title": "统计数据"
+				}
+			},
+			"required": [
+				"day",
+				"statistic"
+			],
+			"title": "按天划分",
+			"type": "object"
+		},
+		"GetStatisticDivByPeriodResponseDivByPeriod": {
+			"properties": {
+				"period": {
+					"$ref": "#/definitions/DivByPeriodPeriod",
+					"title": "时段"
+				},
+				"statistic": {
+					"$ref": "#/definitions/quarantineStatisticData",
+					"title": "统计数据"
+				}
+			},
+			"required": [
+				"period",
+				"statistic"
+			],
+			"title": "按天划分",
+			"type": "object"
+		},
+		"PersonPERMISSION_DEF": {
+			"default": "ORDINARY",
+			"enum": [
+				"ORDINARY",
+				"VIP",
+				"WARNING"
+			],
+			"properties": {},
+			"required": true,
+			"type": "string"
+		},
+		"PersonREGISTER_STATUS": {
+			"default": "NO_REGISTER_STATUS",
+			"enum": [
+				"NO_REGISTER_STATUS",
+				"REGISTER_SUCCESS",
+				"REGISTER_FAILED"
+			],
+			"properties": {},
+			"required": true,
+			"type": "string"
+		},
+		"quarantineAddPersonRequest": {
+			"properties": {
+				"person": {
+					"items": {
+						"$ref": "#/definitions/quarantinePerson"
+					},
+					"title": "人员信息",
+					"type": "array"
+				}
+			},
+			"required": [
+				"person"
+			],
+			"title": "--------------- 人员信息 ---------------",
+			"type": "object"
+		},
+		"quarantineAddPersonResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"quarantineAddRecordRequest": {
+			"properties": {
+				"record": {
+					"$ref": "#/definitions/quarantineRecord",
+					"title": "记录信息"
+				}
+			},
+			"required": [
+				"record"
+			],
+			"type": "object"
+		},
+		"quarantineAddRecordResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"quarantineCODE": {
+			"default": "OK",
+			"enum": [
+				"OK",
+				"FAILED"
+			],
+			"properties": {},
+			"required": true,
+			"type": "string"
+		},
+		"quarantineDelPersonRequest": {
+			"properties": {
+				"person_ids": {
+					"items": {
+						"type": "string"
+					},
+					"type": "array"
+				}
+			},
+			"required": [
+				"person_ids"
+			],
+			"type": "object"
+		},
+		"quarantineDelPersonResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"quarantineDelRequest": {
+			"properties": {
+				"end_time": {
+					"format": "int64",
+					"title": "结束时间",
+					"type": "string"
+				},
+				"ids": {
+					"items": {
+						"type": "string"
+					},
+					"title": "如果该字段不为空，则直接删除这些id",
+					"type": "array"
+				},
+				"start_time": {
+					"format": "int64",
+					"title": "开始时间",
+					"type": "string"
+				}
+			},
+			"required": [
+				"ids",
+				"start_time",
+				"end_time"
+			],
+			"type": "object"
+		},
+		"quarantineDelResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"msg",
+				"code"
+			],
+			"type": "object"
+		},
+		"quarantineExportRequest": {
+			"properties": {
+				"end_time": {
+					"format": "int64",
+					"title": "结束时间",
+					"type": "string"
+				},
+				"input_line": {
+					"title": "搜索框，可根据机器人id/昵称/公司模糊查询",
+					"type": "string"
+				},
+				"is_mask": {
+					"$ref": "#/definitions/quarantineIS_MASK",
+					"title": "是否带口罩"
+				},
+				"is_register": {
+					"$ref": "#/definitions/quarantineIS_REGISTER",
+					"title": "是否注册"
+				},
+				"robot_sn": {
+					"title": "机器人sn精准查询",
+					"type": "string"
+				},
+				"start_time": {
+					"format": "int64",
+					"title": "开始时间",
+					"type": "string"
+				},
+				"temp": {
+					"$ref": "#/definitions/quarantineTEMP_SCOPE",
+					"title": "体温"
+				}
+			},
+			"required": [
+				"temp",
+				"is_mask",
+				"is_register",
+				"robot_sn",
+				"input_line",
+				"start_time",
+				"end_time"
+			],
+			"type": "object"
+		},
+		"quarantineExportResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"file_url": {
+					"title": "导出文件url",
+					"type": "string"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"file_url"
+			],
+			"type": "object"
+		},
+		"quarantineGetPersonRequest": {
+			"properties": {
+				"person_id": {
+					"title": "人员id",
+					"type": "string"
+				}
+			},
+			"required": [
+				"person_id"
+			],
+			"type": "object"
+		},
+		"quarantineGetPersonResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				},
+				"person": {
+					"$ref": "#/definitions/quarantinePerson"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"person"
+			],
+			"type": "object"
+		},
+		"quarantineGetStatisticDivByDayRequest": {
+			"properties": {
+				"device_ids": {
+					"items": {
+						"type": "string"
+					},
+					"title": "设备",
+					"type": "array"
+				},
+				"end_time": {
+					"format": "int64",
+					"title": "结束时间",
+					"type": "string"
+				},
+				"start_time": {
+					"format": "int64",
+					"title": "开始时间",
+					"type": "string"
+				}
+			},
+			"required": [
+				"start_time",
+				"end_time",
+				"device_ids"
+			],
+			"type": "object"
+		},
+		"quarantineGetStatisticDivByDayResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"data": {
+					"items": {
+						"$ref": "#/definitions/GetStatisticDivByDayResponseDivByDay"
+					},
+					"title": "按天划分的统计数据",
+					"type": "array"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"data"
+			],
+			"type": "object"
+		},
+		"quarantineGetStatisticDivByPeriodRequest": {
+			"properties": {
+				"device_ids": {
+					"items": {
+						"type": "string"
+					},
+					"title": "设备",
+					"type": "array"
+				},
+				"end_time": {
+					"format": "int64",
+					"title": "结束时间",
+					"type": "string"
+				},
+				"start_time": {
+					"format": "int64",
+					"title": "开始时间",
+					"type": "string"
+				}
+			},
+			"required": [
+				"start_time",
+				"end_time",
+				"device_ids"
+			],
+			"type": "object"
+		},
+		"quarantineGetStatisticDivByPeriodResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"data": {
+					"items": {
+						"$ref": "#/definitions/GetStatisticDivByPeriodResponseDivByPeriod"
+					},
+					"title": "按天划分的统计数据",
+					"type": "array"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"msg",
+				"data",
+				"code"
+			],
+			"type": "object"
+		},
+		"quarantineGetStatisticRequest": {
+			"properties": {
+				"device_ids": {
+					"items": {
+						"type": "string"
+					},
+					"title": "设备",
+					"type": "array"
+				},
+				"end_time": {
+					"format": "int64",
+					"title": "结束时间",
+					"type": "string"
+				},
+				"start_time": {
+					"format": "int64",
+					"title": "开始时间",
+					"type": "string"
+				}
+			},
+			"required": [
+				"start_time",
+				"end_time",
+				"device_ids"
+			],
+			"type": "object"
+		},
+		"quarantineGetStatisticResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				},
+				"statistic": {
+					"$ref": "#/definitions/quarantineStatisticData",
+					"title": "统计数据"
+				}
+			},
+			"required": [
+				"msg",
+				"statistic",
+				"code"
+			],
+			"type": "object"
+		},
+		"quarantineIS_MASK": {
+			"default": "NO_IS_MASK",
+			"enum": [
+				"NO_IS_MASK",
+				"MASKED",
+				"NO_MASK"
+			],
+			"properties": {},
+			"required": true,
+			"title": "- NO_IS_MASK: 不做过滤条件\n - MASKED: 已佩戴\n - NO_MASK: 未佩戴",
+			"type": "string"
+		},
+		"quarantineIS_REGISTER": {
+			"default": "NO_IS_REGISTER",
+			"enum": [
+				"NO_IS_REGISTER",
+				"REGISTERED",
+				"NO_REGISTER"
+			],
+			"properties": {},
+			"required": true,
+			"title": "- NO_IS_REGISTER: 不做过滤条件\n - REGISTERED: 已注册\n - NO_REGISTER: 未注册",
+			"type": "string"
+		},
+		"quarantineImportPersonsRequest": {
+			"properties": {
+				"file_url": {
+					"title": "文件url",
+					"type": "string"
+				}
+			},
+			"required": [
+				"file_url"
+			],
+			"type": "object"
+		},
+		"quarantineImportPersonsResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"quarantineImportTemplateRequest": {
+			"properties": {},
+			"required": true,
+			"type": "object"
+		},
+		"quarantineImportTemplateResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				},
+				"template_url": {
+					"title": "导入模板url",
+					"type": "string"
+				}
+			},
+			"required": [
+				"template_url",
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"quarantineListPersonRequest": {
+			"properties": {
+				"name": {
+					"title": "人员昵称",
+					"type": "string"
+				},
+				"page_index": {
+					"format": "int32",
+					"title": "第几页，从 1 开始",
+					"type": "integer"
+				},
+				"page_size": {
+					"format": "int32",
+					"title": "每页几条",
+					"type": "integer"
+				},
+				"person_ids": {
+					"items": {
+						"type": "string"
+					},
+					"title": "人员id列表，如果数组不为空，则只查找数组里的id，否则就根据下面条件筛选",
+					"type": "array"
+				}
+			},
+			"required": [
+				"person_ids",
+				"name",
+				"page_index",
+				"page_size"
+			],
+			"type": "object"
+		},
+		"quarantineListPersonResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				},
+				"persons": {
+					"items": {
+						"$ref": "#/definitions/quarantinePerson"
+					},
+					"title": "人员列表",
+					"type": "array"
+				},
+				"total": {
+					"format": "int64",
+					"title": "总数量",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg",
+				"persons",
+				"total"
+			],
+			"type": "object"
+		},
+		"quarantineListRequest": {
+			"properties": {
+				"end_time": {
+					"format": "int64",
+					"title": "结束时间",
+					"type": "string"
+				},
+				"input_line": {
+					"title": "搜索框，可根据机器人id/昵称/公司模糊查询",
+					"type": "string"
+				},
+				"is_mask": {
+					"$ref": "#/definitions/quarantineIS_MASK",
+					"title": "是否带口罩"
+				},
+				"is_register": {
+					"$ref": "#/definitions/quarantineIS_REGISTER",
+					"title": "是否注册"
+				},
+				"limit": {
+					"format": "int32",
+					"title": "每页条数",
+					"type": "integer"
+				},
+				"offset": {
+					"format": "int32",
+					"title": "页数",
+					"type": "integer"
+				},
+				"robot_sn": {
+					"title": "机器人sn精准查询",
+					"type": "string"
+				},
+				"start_time": {
+					"format": "int64",
+					"title": "开始时间",
+					"type": "string"
+				},
+				"temp": {
+					"$ref": "#/definitions/quarantineTEMP_SCOPE",
+					"title": "体温"
+				}
+			},
+			"required": [
+				"start_time",
+				"end_time",
+				"temp",
+				"is_mask",
+				"is_register",
+				"limit",
+				"input_line",
+				"robot_sn",
+				"offset"
+			],
+			"type": "object"
+		},
+		"quarantineListResponse": {
+			"properties": {
+				"abnormal_temperature": {
+					"format": "int32",
+					"title": "异常体温",
+					"type": "integer"
+				},
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				},
+				"no_mask": {
+					"format": "int32",
+					"title": "未带口罩",
+					"type": "integer"
+				},
+				"records": {
+					"items": {
+						"$ref": "#/definitions/quarantineRecord"
+					},
+					"title": "记录列表",
+					"type": "array"
+				},
+				"total": {
+					"format": "int64",
+					"title": "总数",
+					"type": "string"
+				}
+			},
+			"required": [
+				"total",
+				"records",
+				"abnormal_temperature",
+				"no_mask",
+				"code",
+				"msg"
+			],
+			"type": "object"
+		},
+		"quarantinePerson": {
+			"properties": {
+				"face_id": {
+					"title": "人脸id",
+					"type": "string"
+				},
+				"name": {
+					"title": "姓名/昵称",
+					"type": "string"
+				},
+				"permission": {
+					"$ref": "#/definitions/PersonPERMISSION_DEF",
+					"title": "权限"
+				},
+				"person_id": {
+					"title": "人员id",
+					"type": "string"
+				},
+				"register_picture": {
+					"title": "人脸照片",
+					"type": "string"
+				},
+				"register_status": {
+					"$ref": "#/definitions/PersonREGISTER_STATUS",
+					"title": "注册状态"
+				},
+				"register_time": {
+					"format": "int64",
+					"title": "注册时间",
+					"type": "string"
+				},
+				"remark": {
+					"title": "备注",
+					"type": "string"
+				}
+			},
+			"required": [
+				"permission",
+				"register_status",
+				"remark",
+				"register_time",
+				"person_id",
+				"name",
+				"register_picture",
+				"face_id"
+			],
+			"type": "object"
+		},
+		"quarantineRecord": {
+			"properties": {
+				"alarm_capture_image": {
+					"title": "报警抓拍",
+					"type": "string"
+				},
+				"cross_time": {
+					"format": "int64",
+					"title": "通行时间",
+					"type": "string"
+				},
+				"device_id": {
+					"title": "设备id",
+					"type": "string"
+				},
+				"device_sn": {
+					"title": "设备sn",
+					"type": "string"
+				},
+				"face_detect_image": {
+					"title": "人脸检测照片",
+					"type": "string"
+				},
+				"face_id": {
+					"title": "人脸id",
+					"type": "string"
+				},
+				"is_mask": {
+					"title": "是否戴口罩",
+					"type": "boolean"
+				},
+				"is_register": {
+					"title": "是否注册",
+					"type": "boolean"
+				},
+				"location": {
+					"title": "设备位置",
+					"type": "string"
+				},
+				"name": {
+					"title": "人员昵称",
+					"type": "string"
+				},
+				"organization_name": {
+					"title": "公司/组织名称",
+					"type": "string"
+				},
+				"record_id": {
+					"title": "记录id",
+					"type": "string"
+				},
+				"temperature": {
+					"format": "float",
+					"title": "温度",
+					"type": "number"
+				}
+			},
+			"required": [
+				"device_id",
+				"face_id",
+				"is_register",
+				"temperature",
+				"alarm_capture_image",
+				"device_sn",
+				"location",
+				"record_id",
+				"name",
+				"organization_name",
+				"face_detect_image",
+				"is_mask",
+				"cross_time"
+			],
+			"title": "------ 检疫记录 ------",
+			"type": "object"
+		},
+		"quarantineStatisticData": {
+			"properties": {
+				"abnormal_temp_num": {
+					"format": "int32",
+					"title": "体温异常人数",
+					"type": "integer"
+				},
+				"cross_num": {
+					"format": "int32",
+					"title": "通行人数",
+					"type": "integer"
+				},
+				"not_mask": {
+					"format": "int32",
+					"title": "未带口罩人数",
+					"type": "integer"
+				},
+				"not_register": {
+					"format": "int32",
+					"title": "未注册",
+					"type": "integer"
+				}
+			},
+			"required": [
+				"cross_num",
+				"abnormal_temp_num",
+				"not_mask",
+				"not_register"
+			],
+			"type": "object"
+		},
+		"quarantineTEMP_SCOPE": {
+			"default": "NO_TEMP_SCOPE",
+			"description": "- NO_TEMP_SCOPE: 不做过滤条件\n - NORMAL: 正常\n - ABNORMAL: 异常",
+			"enum": [
+				"NO_TEMP_SCOPE",
+				"NORMAL",
+				"ABNORMAL"
+			],
+			"properties": {},
+			"required": true,
+			"title": "------ 检疫记录 ------",
+			"type": "string"
+		},
+		"quarantineUpdatePersonRequest": {
+			"properties": {
+				"person": {
+					"$ref": "#/definitions/quarantinePerson",
+					"title": "人员信息"
+				}
+			},
+			"required": [
+				"person"
+			],
+			"type": "object"
+		},
+		"quarantineUpdatePersonResponse": {
+			"properties": {
+				"code": {
+					"$ref": "#/definitions/quarantineCODE",
+					"title": "状态码"
+				},
+				"msg": {
+					"title": "错误信息",
+					"type": "string"
+				}
+			},
+			"required": [
+				"code",
+				"msg"
+			],
+			"type": "object"
+		}
+	},
+	"info": {
+		"title": "proto/quarantine/quarantine.proto",
+		"version": "version not set"
+	},
+	"paths": {
+		"/rpc/quarantine/PersonService.AddPerson": {
+			"post": {
+				"operationId": "PersonService_AddPerson",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineAddPersonRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineAddPersonResponse"
+						}
+					}
+				},
+				"summary": "添加人员信息",
+				"tags": [
+					"PersonService"
+				]
+			}
+		},
+		"/rpc/quarantine/PersonService.DelPerson": {
+			"post": {
+				"operationId": "PersonService_DelPerson",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineDelPersonRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineDelPersonResponse"
+						}
+					}
+				},
+				"summary": "删除人员信息",
+				"tags": [
+					"PersonService"
+				]
+			}
+		},
+		"/rpc/quarantine/PersonService.GetPerson": {
+			"post": {
+				"operationId": "PersonService_GetPerson",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineGetPersonRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineGetPersonResponse"
+						}
+					}
+				},
+				"summary": "获取人员信息-单条",
+				"tags": [
+					"PersonService"
+				]
+			}
+		},
+		"/rpc/quarantine/PersonService.ImportPersons": {
+			"post": {
+				"operationId": "PersonService_ImportPersons",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineImportPersonsRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineImportPersonsResponse"
+						}
+					}
+				},
+				"summary": "人员信息导入",
+				"tags": [
+					"PersonService"
+				]
+			}
+		},
+		"/rpc/quarantine/PersonService.ImportTemplate": {
+			"post": {
+				"operationId": "PersonService_ImportTemplate",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineImportTemplateRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineImportTemplateResponse"
+						}
+					}
+				},
+				"summary": "导入模板",
+				"tags": [
+					"PersonService"
+				]
+			}
+		},
+		"/rpc/quarantine/PersonService.ListPerson": {
+			"post": {
+				"operationId": "PersonService_ListPerson",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineListPersonRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineListPersonResponse"
+						}
+					}
+				},
+				"summary": "获取人员信息-列表",
+				"tags": [
+					"PersonService"
+				]
+			}
+		},
+		"/rpc/quarantine/PersonService.UpdatePerson": {
+			"post": {
+				"operationId": "PersonService_UpdatePerson",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineUpdatePersonRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineUpdatePersonResponse"
+						}
+					}
+				},
+				"summary": "更新人员信息",
+				"tags": [
+					"PersonService"
+				]
+			}
+		},
+		"/rpc/quarantine/RecordService.Add": {
+			"post": {
+				"operationId": "RecordService_Add",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineAddRecordRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineAddRecordResponse"
+						}
+					}
+				},
+				"summary": "添加记录列表",
+				"tags": [
+					"RecordService"
+				]
+			}
+		},
+		"/rpc/quarantine/RecordService.Del": {
+			"post": {
+				"operationId": "RecordService_Del",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineDelRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineDelResponse"
+						}
+					}
+				},
+				"summary": "删除检疫记录",
+				"tags": [
+					"RecordService"
+				]
+			}
+		},
+		"/rpc/quarantine/RecordService.Export": {
+			"post": {
+				"operationId": "RecordService_Export",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineExportRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineExportResponse"
+						}
+					}
+				},
+				"summary": "导出检疫记录",
+				"tags": [
+					"RecordService"
+				]
+			}
+		},
+		"/rpc/quarantine/RecordService.List": {
+			"post": {
+				"operationId": "RecordService_List",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineListRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineListResponse"
+						}
+					}
+				},
+				"summary": "检疫记录列表",
+				"tags": [
+					"RecordService"
+				]
+			}
+		},
+		"/rpc/quarantine/Statistic.GetStatistic": {
+			"post": {
+				"operationId": "Statistic_GetStatistic",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineGetStatisticRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineGetStatisticResponse"
+						}
+					}
+				},
+				"summary": "获取统计数据",
+				"tags": [
+					"Statistic"
+				]
+			}
+		},
+		"/rpc/quarantine/Statistic.GetStatisticDivByDay": {
+			"post": {
+				"operationId": "Statistic_GetStatisticDivByDay",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineGetStatisticDivByDayRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineGetStatisticDivByDayResponse"
+						}
+					}
+				},
+				"summary": "按天获取统计数据",
+				"tags": [
+					"Statistic"
+				]
+			}
+		},
+		"/rpc/quarantine/Statistic.GetStatisticDivByPeriod": {
+			"post": {
+				"operationId": "Statistic_GetStatisticDivByPeriod",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/quarantineGetStatisticDivByPeriodRequest"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"$ref": "#/definitions/quarantineGetStatisticDivByPeriodResponse"
+						}
+					}
+				},
+				"summary": "按时段获取统计数据",
+				"tags": [
+					"Statistic"
+				]
+			}
+		}
+	},
+	"produces": [
+		"application/json"
+	],
+	"schemes": [
+		"http",
+		"https"
+	],
+	"swagger": "2.0"
+}
