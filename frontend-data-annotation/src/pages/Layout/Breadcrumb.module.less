@@ -1,0 +1,48 @@
+@import '../../styles/var.less';
+
+.bread {
+  padding: 1.6rem 0;
+}
+
+.title {
+  position: relative;
+  width: 100%;
+  font-weight: 700;
+  margin-top: 2rem;
+  font-size: @font-size-extra-medium;
+}
+
+.crumbs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  height: 11rem;
+  padding: 1.6rem 3.2rem;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.spacing {
+  margin: 0 1rem;
+  font-size: @font-size-small;
+}
+
+.text {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: @font-size-small;
+}
+
+.active {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.modalTitle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #fff;
+  min-width: 40rem;
+  > span {
+    .title();
+  }
+}

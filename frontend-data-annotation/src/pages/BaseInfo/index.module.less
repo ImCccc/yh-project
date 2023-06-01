@@ -1,0 +1,79 @@
+@import '../../styles/var.less';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.2rem;
+  background: #fff;
+  :global(.ant-form-item-label > label) {
+    height: @base-height;
+  }
+  :global(.ant-picker) {
+    width: 100%;
+  }
+}
+
+.form {
+  width: 76rem;
+}
+
+.margin-top-fix {
+  margin-top: -1.6rem;
+}
+
+.col {
+  display: flex;
+  position: relative;
+  width: 76rem;
+  margin-bottom: 3.2rem;
+}
+
+.fix {
+  margin-bottom: 1.8rem;
+}
+
+.err {
+  position: absolute;
+  bottom: -3rem;
+  left: 14rem;
+}
+
+.center {
+  align-items: center;
+}
+
+.label {
+  text-align: right;
+  width: 13rem;
+  flex-shrink: 0;
+  height: @base-height;
+  line-height: @base-height;
+  margin-right: 1rem;
+}
+
+.comp {
+  flex-grow: 1;
+  // width: 62rem;
+}
+
+.radioButton {
+  :global(.ant-radio-button-wrapper) {
+    width: 13rem;
+    text-align: center;
+  }
+}
+
+.table {
+  .margin-top-fix();
+  flex-grow: 1;
+}
+
+.btnBox {
+  display: flex;
+  justify-content: center;
+}
+
+.submit {
+  width: 20rem;
+}

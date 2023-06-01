@@ -1,0 +1,15 @@
+@import '../../styles/var.less';
+
+.expandable {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  > div {
+    width: 33.33%;
+    line-height: @base-height;
+  }
+  .value {
+    margin-left: 1rem;
+    color: rgba(0, 0, 0, 0.65);
+  }
+}

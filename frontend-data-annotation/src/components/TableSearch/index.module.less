@@ -1,0 +1,48 @@
+@import '../../styles/var.less';
+
+.layout {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  margin-bottom: @outside-margin;
+  padding: 0 @inside-margin-rl @inside-margin-tb;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: @inside-margin-tb;
+  &:not(:last-child) {
+    margin-right: 5.6rem;
+  }
+}
+
+.comp {
+  width: 30rem !important;
+  margin-right: 1rem;
+}
+
+.range {
+  width: 230px;
+  margin-right: 2rem;
+}
+
+.label {
+  flex-shrink: 0;
+  margin-right: 1rem;
+}
+
+.buttonwrap {
+  flex-shrink: 0;
+  margin-top: @inside-margin-tb;
+  button {
+    margin-left: @button-margin;
+  }
+}
+
+.field {
+  display: flex;
+  flex-wrap: wrap;
+}
