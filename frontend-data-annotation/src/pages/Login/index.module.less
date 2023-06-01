@@ -1,0 +1,132 @@
+@input-height: 5.8rem;
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  .radio {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+    justify-content: space-between;
+  }
+
+  .bg {
+    height: 100%;
+    flex-grow: 1;
+    background: url(/login-bg.png) no-repeat;
+    background-size: 100% 100%;
+  }
+
+  > div {
+    width: 72rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    background-color: #fff;
+    padding: 0 12rem;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 4rem;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 3.4rem;
+  }
+
+  .label {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.85);
+    width: 48rem;
+    margin-bottom: 1rem;
+  }
+
+  .button {
+    height: @input-height;
+    border-radius: 0.8rem;
+    > span {
+      font-size: 2.2rem;
+    }
+  }
+
+  .large {
+    width: 99%;
+  }
+
+  .small {
+    width: 46%;
+  }
+
+  .btnBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .send {
+    position: absolute;
+    right: 0;
+    bottom: 2rem;
+    height: @input-height;
+  }
+
+  .mt {
+    margin-top: 6rem;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .select {
+    height: @input-height;
+    font-size: 1.8rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  }
+
+  :global(.ant-select-single:not(.ant-select-customize-input)
+      .ant-select-selector) {
+    padding: 0;
+    height: 100%;
+  }
+
+  :global(.ant-select-selection-item) {
+    display: flex;
+    align-items: center;
+  }
+
+  .input {
+    padding: 0;
+    height: 6rem;
+    font-size: 1.8rem;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.err {
+  margin-top: 0.6rem;
+  min-height: 2rem;
+}
+
+.agree {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.eye {
+  position: absolute;
+  top: 5.2rem;
+  cursor: pointer;
+  right: 1rem;
+}

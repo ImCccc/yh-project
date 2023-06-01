@@ -1,0 +1,243 @@
+/* @import 'antd/dist/antd.css'; */
+@import './reset.less';
+@import './iconfont.css';
+@import './var.less';
+@import '@/styles/antd-theme.less';
+
+body,
+html,
+#root {
+  height: 100%;
+  font-size: 10px;
+}
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+strong,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+canvas,
+details,
+footer,
+header,
+nav,
+section {
+  font-size: 1.8rem;
+}
+
+.iconfont {
+  font-size: 2.2rem;
+}
+
+.icon-Shape {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.icon-butongguo {
+  color: #ff4d4f;
+  margin-left: 4rem;
+  font-size: 5rem;
+  font-weight: 400;
+}
+
+.icon-feiqi {
+  color: rgb(216, 216, 216);
+  margin-left: 4rem;
+  font-size: 5rem;
+  font-weight: 400;
+}
+
+.pointer,
+.iconfont {
+  cursor: pointer;
+}
+
+.link {
+  color: #3f5aab;
+}
+
+.del {
+  color: #ff796f;
+}
+
+.relative {
+  position: relative;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sk0 {
+  flex-shrink: 0;
+}
+
+.require::before {
+  font-family: SimSun, sans-serif;
+  content: '*';
+  display: inline-block;
+  margin-right: 4px;
+  color: #ff4d4f;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.err-border {
+  border: 1px solid #ff4d4f !important;
+}
+
+.err-info {
+  color: #ff4d4f;
+  font-size: @font-size-small;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.f-small {
+  font-size: @font-size-small;
+}
+
+.hide {
+  display: none !important;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.strong {
+  color: #f5222d;
+}
+
+.btn-spacing {
+  margin: 0 1.2rem;
+  width: 1px;
+  height: 2.4rem;
+  border-left: 1px solid #e9e9e9;
+}
+
+.btn-mr {
+  margin-right: 2.4rem;
+}
+
+.btn-ml {
+  margin-left: 2.4rem;
+}
+
+// 去掉记住密码的样式
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px white inset;
+  transition-delay: 111111s;
+  transition: color 111111s ease-out, background-color 111111s ease-out;
+}
+
+.page-tabs {
+  .ant-tabs-nav-wrap {
+    background: #fff;
+    height: 4.8rem;
+  }
+  &.ant-tabs-top > .ant-tabs-nav {
+    margin: 0;
+  }
+  .ant-tabs-nav-wrap {
+    padding-left: 5.6rem;
+  }
+}
+
+.page-empty {
+  font-size: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #9e9e9e;
+  min-height: 30rem;
+}
+
+.page-padding {
+  padding: @outside-margin;
+}
+
+.page-padding-tb {
+  padding-top: @outside-margin;
+  padding-bottom: @outside-margin;
+}
+
+// 修复密码自动填充
+.flx-fill {
+  position: fixed !important;
+  left: 2000px !important;
+}
+
+.base-head {
+  min-height: @row-height;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.base-font-title {
+  font-size: @font-size-medium;
+  font-weight: 700;
+}
+
+.base-border {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.base-label {
+  flex-shrink: 0;
+  font-size: @font-size-base;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.base-value {
+  font-size: @font-size-base;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.base-min-width {
+  min-width: 660px;
+}

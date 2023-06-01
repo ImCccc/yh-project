@@ -1,0 +1,191 @@
+@import '../../styles/var.less';
+
+.main {
+  width: 100%;
+  display: flex;
+  padding: @outside-margin;
+  > div {
+    // min-height: calc(~'100vh - 27rem');
+    background-color: #fff;
+    padding-top: 1rem;
+  }
+}
+
+.leftCom {
+  position: relative;
+  width: 35.2rem;
+  padding: 0 3.2rem;
+  .search {
+    margin-top: 1.4rem;
+  }
+}
+
+.teamMain {
+  margin-top: 1.6rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 10rem);
+  overflow-x: hidden;
+}
+
+/* 滚动条整体 */
+.teamMain::-webkit-scrollbar {
+  height: 0.2rem;
+  width: 0.2rem;
+}
+
+/* 两个滚动条交接处 -- x轴和y轴 */
+.teamMain::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* 滚动条滑块 */
+.teamMain::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  -webkit-box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  background: #999;
+}
+
+/* 滚动条轨道 */
+.teamMain::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  background: #ededed;
+}
+
+/* 滚动条两端按钮 */
+.teamMain::-webkit-scrollbar-button {
+}
+
+.teamItem {
+  margin-bottom: 1.6rem;
+  width: 28.8rem;
+  min-height: 9rem;
+  background: #fafafa;
+  border-radius: 0.4rem;
+  padding: 0 1.6rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.selectItem {
+  background: #e6f7ff;
+  color: #1890ff;
+  border: 0.1rem solid #1890ff;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.currentTeamItem {
+  margin-bottom: 1.6rem;
+  width: 28.7rem;
+  height: 9rem;
+  border-radius: 0.4rem;
+  padding: 0 1.6rem;
+  font-size: 1.8rem;
+  background: #e6f7ff;
+  color: #1890ff;
+  border: 0.1rem solid #1890ff;
+  box-sizing: border-box;
+}
+
+.teamItemTop {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+.teamName {
+  word-break: break-all;
+  margin-right: 1rem;
+}
+
+.teamItemBottom {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.section {
+  scrollbar-width: thin;
+}
+
+.rightCom {
+  width: calc(~'100% - 35.2rem');
+  // height: calc(~'100% - 3.2rem');
+  padding: 0 3.2rem;
+  border-left: 0.1rem solid #e8e8e8;
+}
+
+.deleteButton {
+  margin-left: 2.4rem;
+}
+
+.infoBox {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  word-break: break-all;
+  > div {
+    flex-shrink: 0;
+    display: flex;
+    width: 33.3%;
+    margin-bottom: 2rem;
+  }
+}
+
+.rightComFourthLayer {
+  // height: calc(~'100% - 24rem');
+  width: 100%;
+}
+
+.deleteModalTop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-weight: 600;
+    .red {
+      color: #ff4d4f;
+      word-break: break-all;
+    }
+  }
+}
+
+.deleteModalBottom {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  margin-top: 2.5rem;
+}
+
+.deleteModalBottomLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  span {
+    height: 3rem;
+    color: rgba(0, 0, 0, 0.85);
+  }
+}
+
+.deleteModalBottomRight {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  span {
+    margin-left: 1.5rem;
+    color: rgba(0, 0, 0, 0.65);
+    height: 3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

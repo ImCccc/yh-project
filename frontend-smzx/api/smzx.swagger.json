@@ -1,0 +1,3333 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "smzx/smzx.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/rpc/goschedule.smzx/TaskDispatchService.Dispatch": {
+      "post": {
+        "summary": "业务服务调用调度服务接口 调度实现逻辑",
+        "operationId": "TaskDispatchService_Dispatch",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxCommonResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxCommonReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskDispatchService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AgvDeviceService.Get": {
+      "post": {
+        "summary": "AGV设备详细 包括属性列表 pad",
+        "operationId": "AgvDeviceService_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDeviceGetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDeviceGetReq"
+            }
+          }
+        ],
+        "tags": [
+          "AgvDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AgvDeviceService.Import": {
+      "post": {
+        "summary": "AGV设备导入",
+        "operationId": "AgvDeviceService_Import",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDeviceImportResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDeviceImportReq"
+            }
+          }
+        ],
+        "tags": [
+          "AgvDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AgvDeviceService.Page": {
+      "post": {
+        "summary": "AGV设备分页",
+        "operationId": "AgvDeviceService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDevicePageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDevicePageReq"
+            }
+          }
+        ],
+        "tags": [
+          "AgvDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AgvDeviceService.ProductList": {
+      "post": {
+        "summary": "AGV产品",
+        "operationId": "AgvDeviceService_ProductList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDeviceProductListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDeviceProductListReq"
+            }
+          }
+        ],
+        "tags": [
+          "AgvDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AgvDeviceService.Update": {
+      "post": {
+        "summary": "更新AGV设备",
+        "operationId": "AgvDeviceService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDeviceUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAgvDeviceUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "AgvDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AppUpgradeService.Add": {
+      "post": {
+        "summary": "添加应用版本",
+        "operationId": "AppUpgradeService_Add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradeAddResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradeAddReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppUpgradeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AppUpgradeService.Del": {
+      "post": {
+        "summary": "删除应用版本",
+        "operationId": "AppUpgradeService_Del",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradeDelResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradeDelReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppUpgradeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AppUpgradeService.Get": {
+      "post": {
+        "summary": "获取应用版本",
+        "operationId": "AppUpgradeService_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradeGetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradeGetReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppUpgradeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AppUpgradeService.PadVersion": {
+      "post": {
+        "summary": "获取pad的最新版本",
+        "operationId": "AppUpgradeService_PadVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradePadVersionResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradePadVersionReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppUpgradeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AppUpgradeService.Page": {
+      "post": {
+        "summary": "应用版本列表",
+        "operationId": "AppUpgradeService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradePageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradePageReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppUpgradeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/AppUpgradeService.Update": {
+      "post": {
+        "summary": "更新应用版本",
+        "operationId": "AppUpgradeService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradeUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxAppUpgradeUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "AppUpgradeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/BroadcastService.Add": {
+      "post": {
+        "summary": "添加播报",
+        "operationId": "BroadcastService_Add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastAddResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastAddReq"
+            }
+          }
+        ],
+        "tags": [
+          "BroadcastService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/BroadcastService.Del": {
+      "post": {
+        "summary": "删除播报",
+        "operationId": "BroadcastService_Del",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastDelResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastDelReq"
+            }
+          }
+        ],
+        "tags": [
+          "BroadcastService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/BroadcastService.Get": {
+      "post": {
+        "summary": "获取播报",
+        "operationId": "BroadcastService_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastGetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastGetReq"
+            }
+          }
+        ],
+        "tags": [
+          "BroadcastService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/BroadcastService.Page": {
+      "post": {
+        "summary": "播报列表",
+        "operationId": "BroadcastService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastPageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastPageReq"
+            }
+          }
+        ],
+        "tags": [
+          "BroadcastService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/BroadcastService.Update": {
+      "post": {
+        "summary": "更新播报",
+        "operationId": "BroadcastService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxBroadcastUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "BroadcastService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/ChargeService.DeviceList": {
+      "post": {
+        "operationId": "ChargeService_DeviceList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxChargeDeviceListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxChargeDeviceListReq"
+            }
+          }
+        ],
+        "tags": [
+          "ChargeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/ChargeService.GetConfig": {
+      "post": {
+        "operationId": "ChargeService_GetConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxChargeConfigGetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxChargeConfigGetReq"
+            }
+          }
+        ],
+        "tags": [
+          "ChargeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/ChargeService.UpdateConfig": {
+      "post": {
+        "operationId": "ChargeService_UpdateConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxChargeConfigUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxChargeConfigUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "ChargeService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/DevicePropertyService.Refresh": {
+      "post": {
+        "summary": "属性刷新",
+        "operationId": "DevicePropertyService_Refresh",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxDevicePropertyRefreshResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxDevicePropertyRefreshReq"
+            }
+          }
+        ],
+        "tags": [
+          "DevicePropertyService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/ErrorLogService.Add": {
+      "post": {
+        "summary": "添加异常日志",
+        "operationId": "ErrorLogService_Add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxErrorLogAddResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxErrorLogAddReq"
+            }
+          }
+        ],
+        "tags": [
+          "ErrorLogService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/ErrorLogService.Page": {
+      "post": {
+        "summary": "异常日志列表",
+        "operationId": "ErrorLogService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxErrorLogPageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxErrorLogPageReq"
+            }
+          }
+        ],
+        "tags": [
+          "ErrorLogService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/SensorDeviceService.AllProperty": {
+      "post": {
+        "summary": "传感器设备所有属性 pad",
+        "operationId": "SensorDeviceService_AllProperty",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxSensorDeviceAllPropertyResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxSensorDeviceAllPropertyReq"
+            }
+          }
+        ],
+        "tags": [
+          "SensorDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/SensorDeviceService.Import": {
+      "post": {
+        "summary": "传感器设备导入",
+        "operationId": "SensorDeviceService_Import",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxSensorDeviceImportResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxSensorDeviceImportReq"
+            }
+          }
+        ],
+        "tags": [
+          "SensorDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/SensorDeviceService.Page": {
+      "post": {
+        "summary": "传感器设备分页",
+        "operationId": "SensorDeviceService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxSensorDevicePageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxSensorDevicePageReq"
+            }
+          }
+        ],
+        "tags": [
+          "SensorDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/SensorDeviceService.Update": {
+      "post": {
+        "summary": "更新传感器设备",
+        "operationId": "SensorDeviceService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxSensorDeviceUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxSensorDeviceUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "SensorDeviceService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/StreamService.BigScreen": {
+      "post": {
+        "summary": "大屏双向流",
+        "operationId": "StreamService_BigScreen",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/smzxStreamResp"
+                },
+                "error": {
+                  "$ref": "#/definitions/runtimeStreamError"
+                }
+              },
+              "title": "Stream result of smzxStreamResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " (streaming inputs)",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxStreamReq"
+            }
+          }
+        ],
+        "tags": [
+          "StreamService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/StreamService.IceScreen": {
+      "post": {
+        "summary": "冰屏双向流",
+        "operationId": "StreamService_IceScreen",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/smzxStreamResp"
+                },
+                "error": {
+                  "$ref": "#/definitions/runtimeStreamError"
+                }
+              },
+              "title": "Stream result of smzxStreamResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " (streaming inputs)",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxStreamReq"
+            }
+          }
+        ],
+        "tags": [
+          "StreamService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/StreamService.Pad": {
+      "post": {
+        "summary": "pad端双向流",
+        "operationId": "StreamService_Pad",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/smzxStreamResp"
+                },
+                "error": {
+                  "$ref": "#/definitions/runtimeStreamError"
+                }
+              },
+              "title": "Stream result of smzxStreamResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": " (streaming inputs)",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxStreamReq"
+            }
+          }
+        ],
+        "tags": [
+          "StreamService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskDispatchService.Smzx": {
+      "post": {
+        "summary": "调度服务调用业务接口 业务实现逻辑",
+        "operationId": "TaskDispatchService_Smzx",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxCommonResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxCommonReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskDispatchService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskRecordService.Export": {
+      "post": {
+        "summary": "导出任务记录",
+        "operationId": "TaskRecordService_Export",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxTaskRecordExportResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxTaskRecordExportReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskRecordService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskRecordService.Page": {
+      "post": {
+        "summary": "任务记录分页",
+        "operationId": "TaskRecordService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxTaskRecordPageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxTaskRecordPageReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskRecordService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskService.Create": {
+      "post": {
+        "summary": "创建任务",
+        "operationId": "TaskService_Create",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxTaskCreateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxTaskCreateReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskService.Delete": {
+      "post": {
+        "summary": "删除任务",
+        "operationId": "TaskService_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxTaskDeleteResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxTaskDeleteReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskService.List": {
+      "post": {
+        "summary": "所有任务列表",
+        "operationId": "TaskService_List",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxTaskListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "properties": {}
+            }
+          }
+        ],
+        "tags": [
+          "TaskService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskService.Page": {
+      "post": {
+        "summary": "分页查询",
+        "operationId": "TaskService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxTaskPageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxTaskPageReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskService.Start": {
+      "post": {
+        "summary": "开始任务",
+        "operationId": "TaskService_Start",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxTaskStartTaskResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxTaskStartTaskReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/TaskService.Update": {
+      "post": {
+        "summary": "更新",
+        "operationId": "TaskService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxTaskUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxTaskUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "TaskService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/VideoService.Add": {
+      "post": {
+        "summary": "添加视频",
+        "operationId": "VideoService_Add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxVideoAddResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxVideoAddReq"
+            }
+          }
+        ],
+        "tags": [
+          "VideoService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/VideoService.DelList": {
+      "post": {
+        "summary": "删除视频列表",
+        "operationId": "VideoService_DelList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxVideoDelListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxVideoDelListReq"
+            }
+          }
+        ],
+        "tags": [
+          "VideoService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/VideoService.DeviceList": {
+      "post": {
+        "summary": "获取视频设备列表",
+        "operationId": "VideoService_DeviceList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxVideoDeviceListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxVideoDeviceListReq"
+            }
+          }
+        ],
+        "tags": [
+          "VideoService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/VideoService.Get": {
+      "post": {
+        "summary": "获取视频",
+        "operationId": "VideoService_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxVideoGetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxVideoGetReq"
+            }
+          }
+        ],
+        "tags": [
+          "VideoService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/VideoService.Page": {
+      "post": {
+        "summary": "视频列表",
+        "operationId": "VideoService_Page",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxVideoPageResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxVideoPageReq"
+            }
+          }
+        ],
+        "tags": [
+          "VideoService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/VideoService.Push": {
+      "post": {
+        "summary": "视频推送",
+        "operationId": "VideoService_Push",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxVideoPushResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxVideoPushReq"
+            }
+          }
+        ],
+        "tags": [
+          "VideoService"
+        ]
+      }
+    },
+    "/rpc/smzx.smzx/VideoService.Update": {
+      "post": {
+        "summary": "更新视频",
+        "operationId": "VideoService_Update",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/smzxVideoUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/smzxVideoUpdateReq"
+            }
+          }
+        ],
+        "tags": [
+          "VideoService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "runtimeStreamError": {
+      "type": "object",
+      "properties": {
+        "grpc_code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "http_code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "http_status": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "smzxAgvDevice": {
+      "type": "object",
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "device_name": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
+        },
+        "mac": {
+          "type": "string"
+        },
+        "charge_point": {
+          "type": "string",
+          "title": "充电点 x|y|angle"
+        },
+        "is_online": {
+          "type": "boolean",
+          "title": "在线状态 导入不要入参"
+        }
+      }
+    },
+    "smzxAgvDeviceGetReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxAgvDeviceGetResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "agv_device": {
+          "$ref": "#/definitions/smzxAgvDevice"
+        },
+        "propertys": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxAgvDeviceImportReq": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxAgvDevice"
+          }
+        }
+      }
+    },
+    "smzxAgvDeviceImportResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxAgvDevicePageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从1开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        },
+        "device_name": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxAgvDevicePageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxAgvDevice"
+          },
+          "title": "设备列表"
+        }
+      }
+    },
+    "smzxAgvDeviceProduct": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxAgvDeviceProductListReq": {
+      "type": "object"
+    },
+    "smzxAgvDeviceProductListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxAgvDeviceProduct"
+          }
+        }
+      }
+    },
+    "smzxAgvDeviceUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "mac": {
+          "type": "string"
+        },
+        "charge_point": {
+          "type": "string",
+          "title": "充电点 x|y|angle"
+        }
+      }
+    },
+    "smzxAgvDeviceUpdateReq": {
+      "type": "object",
+      "properties": {
+        "agv_device_update": {
+          "$ref": "#/definitions/smzxAgvDeviceUpdate"
+        }
+      }
+    },
+    "smzxAgvDeviceUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "agv_device": {
+          "$ref": "#/definitions/smzxAgvDevice"
+        }
+      }
+    },
+    "smzxAppUpgrade": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "应用版本id"
+        },
+        "name": {
+          "type": "string",
+          "title": "应用版本名称"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32",
+          "title": "应用版本代码"
+        },
+        "product_id": {
+          "type": "string",
+          "title": "产品id"
+        },
+        "app_url": {
+          "type": "string",
+          "title": "app连接"
+        },
+        "desc": {
+          "type": "string",
+          "title": "更新说明"
+        },
+        "date_created": {
+          "type": "string",
+          "format": "int64",
+          "title": "创建毫秒时间戳"
+        }
+      }
+    },
+    "smzxAppUpgradeAddReq": {
+      "type": "object",
+      "properties": {
+        "app_upgrade": {
+          "$ref": "#/definitions/smzxAppUpgrade"
+        }
+      }
+    },
+    "smzxAppUpgradeAddResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "app_upgrade": {
+          "$ref": "#/definitions/smzxAppUpgrade"
+        }
+      }
+    },
+    "smzxAppUpgradeDelReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxAppUpgradeDelResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxAppUpgradeGetReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxAppUpgradeGetResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "app_upgrade": {
+          "$ref": "#/definitions/smzxAppUpgrade"
+        }
+      }
+    },
+    "smzxAppUpgradePadVersionReq": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "title": "设备标识 可以传mac"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32",
+          "title": "当前版本号"
+        }
+      }
+    },
+    "smzxAppUpgradePadVersionResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "apk_url": {
+          "type": "string"
+        },
+        "need_upgrade": {
+          "type": "boolean"
+        }
+      }
+    },
+    "smzxAppUpgradePageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从1开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "开始时间"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "结束时间"
+        },
+        "product_id": {
+          "type": "string",
+          "title": "产品id"
+        }
+      }
+    },
+    "smzxAppUpgradePageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxAppUpgrade"
+          },
+          "title": "应用版本列表"
+        }
+      }
+    },
+    "smzxAppUpgradeUpdateReq": {
+      "type": "object",
+      "properties": {
+        "app_upgrade": {
+          "$ref": "#/definitions/smzxAppUpgrade"
+        }
+      }
+    },
+    "smzxAppUpgradeUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "app_upgrade": {
+          "$ref": "#/definitions/smzxAppUpgrade"
+        }
+      }
+    },
+    "smzxBroadcast": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "播报id"
+        },
+        "name": {
+          "type": "string",
+          "title": "播报名称"
+        },
+        "code": {
+          "type": "string",
+          "title": "播报代码"
+        },
+        "content": {
+          "type": "string",
+          "title": "播报内容"
+        }
+      }
+    },
+    "smzxBroadcastAddReq": {
+      "type": "object",
+      "properties": {
+        "broadcast": {
+          "$ref": "#/definitions/smzxBroadcast"
+        }
+      }
+    },
+    "smzxBroadcastAddResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "broadcast": {
+          "$ref": "#/definitions/smzxBroadcast"
+        }
+      }
+    },
+    "smzxBroadcastDelReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxBroadcastDelResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxBroadcastGetReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxBroadcastGetResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "broadcast": {
+          "$ref": "#/definitions/smzxBroadcast"
+        }
+      }
+    },
+    "smzxBroadcastPageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从1开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        }
+      }
+    },
+    "smzxBroadcastPageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxBroadcast"
+          },
+          "title": "播报列表"
+        }
+      }
+    },
+    "smzxBroadcastUpdateReq": {
+      "type": "object",
+      "properties": {
+        "broadcast": {
+          "$ref": "#/definitions/smzxBroadcast"
+        }
+      }
+    },
+    "smzxBroadcastUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "broadcast": {
+          "$ref": "#/definitions/smzxBroadcast"
+        }
+      }
+    },
+    "smzxChargeConfigGetReq": {
+      "type": "object"
+    },
+    "smzxChargeConfigGetResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "power": {
+          "type": "integer",
+          "format": "int32",
+          "title": "剩余电量百分比 0-100 去回充"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "0 关闭 1 开启"
+        }
+      }
+    },
+    "smzxChargeConfigUpdateReq": {
+      "type": "object",
+      "properties": {
+        "power": {
+          "type": "integer",
+          "format": "int32",
+          "title": "剩余电量百分比 0-100 去回充"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "0 关闭 1 开启"
+        }
+      }
+    },
+    "smzxChargeConfigUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "power": {
+          "type": "integer",
+          "format": "int32",
+          "title": "剩余电量百分比 0-100 去回充"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "0 关闭 1 开启"
+        }
+      }
+    },
+    "smzxChargeDevice": {
+      "type": "object",
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "device_name": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
+        },
+        "power": {
+          "type": "integer",
+          "format": "int32",
+          "title": "剩余电量百分比 0-100"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "1 充电 2 放电 3 正在去充电"
+        }
+      }
+    },
+    "smzxChargeDeviceListReq": {
+      "type": "object"
+    },
+    "smzxChargeDeviceListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxChargeDevice"
+          }
+        }
+      }
+    },
+    "smzxCommonReq": {
+      "type": "object",
+      "properties": {
+        "msg_id": {
+          "type": "string"
+        },
+        "thing": {
+          "type": "string"
+        },
+        "time_stamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "raw_data": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxCommonResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "time_stamp": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "smzxDevicePropertyRefreshReq": {
+      "type": "object"
+    },
+    "smzxDevicePropertyRefreshResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxErrorLog": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "异常日志id"
+        },
+        "error_type": {
+          "type": "string",
+          "title": "异常类型"
+        },
+        "detail": {
+          "type": "string",
+          "title": "异常详情"
+        },
+        "date_created": {
+          "type": "string",
+          "format": "int64",
+          "title": "创建毫秒时间戳"
+        }
+      }
+    },
+    "smzxErrorLogAddReq": {
+      "type": "object",
+      "properties": {
+        "error_log": {
+          "$ref": "#/definitions/smzxErrorLog"
+        }
+      }
+    },
+    "smzxErrorLogAddResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "error_log": {
+          "$ref": "#/definitions/smzxErrorLog"
+        }
+      }
+    },
+    "smzxErrorLogPageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从1开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "开始时间"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "结束时间"
+        }
+      }
+    },
+    "smzxErrorLogPageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxErrorLog"
+          },
+          "title": "异常日志列表"
+        }
+      }
+    },
+    "smzxSensorDevice": {
+      "type": "object",
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "device_name": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
+        },
+        "area": {
+          "type": "integer",
+          "format": "int32",
+          "title": "区位类型 0无 1 外室 2 中式茶艺厅 3西式茶歇亭-1"
+        },
+        "is_online": {
+          "type": "boolean",
+          "title": "在线状态 导入不要入参"
+        }
+      }
+    },
+    "smzxSensorDeviceAllPropertyReq": {
+      "type": "object"
+    },
+    "smzxSensorDeviceAllPropertyResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxSensorDeviceProperty"
+          }
+        }
+      }
+    },
+    "smzxSensorDeviceImportReq": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxSensorDevice"
+          }
+        }
+      }
+    },
+    "smzxSensorDeviceImportResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxSensorDevicePageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从1开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        },
+        "device_name": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxSensorDevicePageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxSensorDevice"
+          },
+          "title": "设备列表"
+        }
+      }
+    },
+    "smzxSensorDeviceProperty": {
+      "type": "object",
+      "properties": {
+        "area": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "device_id": {
+          "type": "string"
+        },
+        "propertys": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxSensorDeviceUpdate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "area": {
+          "type": "integer",
+          "format": "int32",
+          "title": "区位类型 0无 1 外室 2 中式茶艺厅 3西式茶歇亭-1"
+        }
+      }
+    },
+    "smzxSensorDeviceUpdateReq": {
+      "type": "object",
+      "properties": {
+        "sensor_device_update": {
+          "$ref": "#/definitions/smzxSensorDeviceUpdate"
+        }
+      }
+    },
+    "smzxSensorDeviceUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "sensor_device": {
+          "$ref": "#/definitions/smzxSensorDevice"
+        }
+      }
+    },
+    "smzxStreamReq": {
+      "type": "object",
+      "properties": {
+        "msg_id": {
+          "type": "string"
+        },
+        "time_stamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "device_id": {
+          "type": "string"
+        },
+        "command": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "context": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxStreamResp": {
+      "type": "object",
+      "properties": {
+        "msg_id": {
+          "type": "string"
+        },
+        "time_stamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "command": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "context": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxTask": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "任务名称"
+        },
+        "code": {
+          "type": "string",
+          "title": "任务代码"
+        },
+        "area": {
+          "type": "integer",
+          "format": "int32",
+          "title": "区域 1 南门左侧平台 2 南门右侧平台 3 北门平台"
+        },
+        "url": {
+          "type": "string",
+          "title": "图片地址"
+        },
+        "taskRecord": {
+          "$ref": "#/definitions/smzxTaskRecord",
+          "title": "最后一次运行任务"
+        }
+      }
+    },
+    "smzxTaskCreateReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "任务名称"
+        },
+        "code": {
+          "type": "string",
+          "title": "任务代码"
+        },
+        "area": {
+          "type": "integer",
+          "format": "int32",
+          "title": "区域 1 南门左侧平台 2 南门右侧平台 3 北门平台"
+        },
+        "map_id": {
+          "type": "string",
+          "title": "地图id"
+        },
+        "url": {
+          "type": "string",
+          "title": "图片地址"
+        },
+        "task_url": {
+          "type": "string",
+          "title": "任务模板"
+        }
+      }
+    },
+    "smzxTaskCreateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxTaskDeleteReq": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxTaskDeleteResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxTaskDetail": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "任务名称"
+        },
+        "code": {
+          "type": "string",
+          "title": "任务代码"
+        },
+        "area": {
+          "type": "integer",
+          "format": "int32",
+          "title": "区域 1 南门左侧平台 2 南门右侧平台 3 北门平台"
+        },
+        "map_id": {
+          "type": "string",
+          "title": "地图id"
+        },
+        "url": {
+          "type": "string",
+          "title": "图片地址"
+        },
+        "task_url": {
+          "type": "string",
+          "title": "任务模板"
+        }
+      }
+    },
+    "smzxTaskItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "任务项id"
+        },
+        "group_id": {
+          "type": "string",
+          "title": "任务组id"
+        },
+        "device_id": {
+          "type": "string",
+          "title": "设备id"
+        },
+        "command": {
+          "type": "string",
+          "title": "指令"
+        },
+        "arg": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "参数"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "状态 0 已发送 1 执行中 2 失败 3 成功"
+        },
+        "err": {
+          "type": "string",
+          "title": "错误原因"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "开始时间"
+        },
+        "finish_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "结束时间"
+        },
+        "wait_finish": {
+          "type": "boolean",
+          "title": "是否需要等待结束"
+        },
+        "task_id": {
+          "type": "string",
+          "title": "任务id"
+        },
+        "row": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "col": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "smzxTaskListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxTask"
+          },
+          "title": "任务列表"
+        },
+        "lock_code_list": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "被锁定会议"
+        }
+      }
+    },
+    "smzxTaskPageReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "任务名称"
+        },
+        "code": {
+          "type": "string",
+          "title": "代码"
+        },
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "分页"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "smzxTaskPageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxTaskDetail"
+          },
+          "title": "任务列表"
+        }
+      }
+    },
+    "smzxTaskRecord": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "任务id"
+        },
+        "name": {
+          "type": "string",
+          "title": "任务名称"
+        },
+        "code": {
+          "type": "string",
+          "title": "任务代码"
+        },
+        "splice": {
+          "type": "boolean",
+          "title": "是否拼接 拼接完成可以解体 解体完成可以拼接"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "current": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "task_status": {
+          "type": "integer",
+          "format": "int32",
+          "title": "任务状态 0 待拼接 1 执行中 2 失败 3 成功"
+        },
+        "err": {
+          "type": "string",
+          "title": "失败原因"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "开始时间"
+        },
+        "finish_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "结束时间"
+        },
+        "task_item_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxTaskItem"
+          },
+          "title": "任务项列表"
+        },
+        "group_total": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "group_current": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "smzxTaskRecordExportReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxTaskRecordExportResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "file_url": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxTaskRecordPageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从1开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "开始时间"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "int64",
+          "title": "结束时间"
+        }
+      }
+    },
+    "smzxTaskRecordPageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxTaskRecord"
+          },
+          "title": "任务记录列表"
+        }
+      }
+    },
+    "smzxTaskStartTaskReq": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "title": "任务代码"
+        },
+        "splice": {
+          "type": "boolean",
+          "title": "是否拼接"
+        }
+      }
+    },
+    "smzxTaskStartTaskResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "meeting": {
+          "$ref": "#/definitions/smzxTask"
+        },
+        "lock_code_list": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "smzxTaskUpdateReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "任务名称"
+        },
+        "code": {
+          "type": "string",
+          "title": "任务代码"
+        },
+        "area": {
+          "type": "integer",
+          "format": "int32",
+          "title": "区域 1 南门左侧平台 2 南门右侧平台 3 北门平台"
+        },
+        "map_id": {
+          "type": "string",
+          "title": "地图id"
+        },
+        "url": {
+          "type": "string",
+          "title": "图片地址"
+        },
+        "task_url": {
+          "type": "string",
+          "title": "任务模板"
+        }
+      }
+    },
+    "smzxTaskUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxVideo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "视频id"
+        },
+        "name": {
+          "type": "string",
+          "title": "视频名称"
+        },
+        "video_url": {
+          "type": "string",
+          "title": "视频url"
+        }
+      }
+    },
+    "smzxVideoAddReq": {
+      "type": "object",
+      "properties": {
+        "video": {
+          "$ref": "#/definitions/smzxVideo"
+        }
+      }
+    },
+    "smzxVideoAddResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "video": {
+          "$ref": "#/definitions/smzxVideo"
+        }
+      }
+    },
+    "smzxVideoDelListReq": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "smzxVideoDelListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "smzxVideoDevice": {
+      "type": "object",
+      "properties": {
+        "device_id": {
+          "type": "string"
+        },
+        "device_name": {
+          "type": "string"
+        },
+        "product_id": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxVideoDeviceListReq": {
+      "type": "object"
+    },
+    "smzxVideoDeviceListResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxVideoDevice"
+          },
+          "title": "设备列表"
+        }
+      }
+    },
+    "smzxVideoGetReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxVideoGetResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "video": {
+          "$ref": "#/definitions/smzxVideo"
+        }
+      }
+    },
+    "smzxVideoPageReq": {
+      "type": "object",
+      "properties": {
+        "page_index": {
+          "type": "integer",
+          "format": "int32",
+          "title": "第几页，从1开始"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "每页多少条"
+        }
+      }
+    },
+    "smzxVideoPageResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "title": "列表数量"
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/smzxVideo"
+          },
+          "title": "视频列表"
+        }
+      }
+    },
+    "smzxVideoPushReq": {
+      "type": "object",
+      "properties": {
+        "video_id": {
+          "type": "string"
+        },
+        "device_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "smzxVideoPushResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        }
+      }
+    },
+    "smzxVideoUpdateReq": {
+      "type": "object",
+      "properties": {
+        "video": {
+          "$ref": "#/definitions/smzxVideo"
+        }
+      }
+    },
+    "smzxVideoUpdateResp": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "video": {
+          "$ref": "#/definitions/smzxVideo"
+        }
+      }
+    }
+  }
+}
