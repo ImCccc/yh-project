@@ -1,0 +1,1 @@
+cd /home/infore/icescreen/ &&  ./icescreen-client.AppImage

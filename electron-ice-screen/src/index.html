@@ -1,0 +1,129 @@
+<html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+  />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="HandheldFriendly" content="true" />
+  <title>xxx</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    body,
+    html {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #010203;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+    }
+
+    @font-face {
+      font-family: "GaoDuanHeiXiuDing";
+      src: url("GaoDuanHeiXiuDing.ttf");
+    }
+
+    #tipTitle {
+      font-family: "GaoDuanHeiXiuDing" !important;
+      color: #fff;
+      font-size: 120px;
+    }
+
+    .box-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .tipBox {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      height: 168px;
+    }
+
+    .percentage-wrap {
+      display: flex;
+      align-items: center;
+      width: 595px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+    }
+
+    .percentage {
+      height: 48px;
+      min-width: 68px;
+      background-image: linear-gradient(269deg, #49c3ff 0%, #224af3 100%);
+      border-radius: 24px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      padding: 0 10px;
+      font-size: 26px;
+    }
+
+    .error-tip {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+      width: 803px;
+      height: 428px;
+      background-image: url(./alert_farm.png);
+    }
+    .error-tip > div {
+      font-family: "GaoDuanHeiXiuDing" !important;
+      font-size: 80px;
+      line-height: 1;
+    }
+    .big-font {
+      font-size: 100px !important;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+  <script>
+    if (typeof module === "object") {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
+  <script>
+    if (window.module) module = window.module;
+  </script>
+  <link />
+  <body>
+    <div id="tipBox" class="tipBox box-center">
+      <div id="tipTitle">网络检查中</div>
+      <div id="percentageWrap" class="percentage-wrap hide">
+        <div id="percentage" class="percentage"></div>
+      </div>
+    </div>
+    <div id="errorTipWrap" class="error-tip box-center hide">
+      <div id="errorTitle"></div>
+      <div>即将返回待机</div>
+      <div id="countdown" class="big-font">10</div>
+    </div>
+    <video id="video" loop="loop"></video>
+  </body>
+  <script src="./index.js"></script>
+</html>
